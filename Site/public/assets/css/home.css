@@ -1,0 +1,75 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.home{
+    display: flex;
+}
+
+.sidebar-quiz{
+    width: 12%;
+    height: 100vh;
+    background-color: #d3d3d3;
+    border-top-right-radius: 40px;
+}
+
+.quizzes{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    color: #f1f1f1;
+
+    h2{
+        font-size: 25px;
+    }
+
+    img{
+     cursor: pointer;
+     width: 52px;
+     height: 52px;
+    }
+}
+
+.conteudo {
+    width: 76%;
+    background-color: #901480;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+}
+
+.container{
+    width: 80%;
+    height: 80%;
+    background-color: #0090FF;
+    display: flex;
+}
+
+.sidebar-dash{
+    width: 12%;
+    height: 100vh;
+    background-color: #FF8200;
+    display: flex;
+    flex-direction: column;
+    border-top-left-radius: 40px;
+}
+
+.dashs{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    color: #f1f1f1;
+
+    h2{
+        font-size: 25px;
+    }
+
+    img{
+     cursor: pointer;
+     width: 52px;
+     height: 52px;
+    }
+}
