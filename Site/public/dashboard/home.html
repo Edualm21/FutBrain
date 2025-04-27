@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/home.css">
+    <script src="../assets/js/home.js"></script>
     <title>Futebol</title>
 </head>
 <body>
@@ -11,34 +12,40 @@
         <div class="sidebar-quiz">
             <div class="quizzes">
                 <h2>Quiz</h2>
-                <img src="../assets/imgs/premier-league-logo.png">
-                <img src="../assets/imgs/La-Liga-Logo.png">
-                <img src="../assets/imgs/logo_serieA.png">
-                <img src="../assets/imgs/bundesliga-logo.png">
-                <img src="../assets/imgs/brasileirao_logo.png">
-                <img src="../assets/imgs/Logo_UEFA_Champions_League.png">
-                <img src="../assets/imgs/taca-copa-do-mundo.png">
-                <img src="../assets/imgs/bola-futebol.png">
-                <img src="../assets/imgs/Santos_Logo.png">
+                <img src="../assets/imgs/premier-league-logo.png" onclick="premier()">
+                <img src="../assets/imgs/La-Liga-Logo.png" onclick="laliga()">
+                <img src="../assets/imgs/logo_serieA.png" onclick="serieA()">
+                <img src="../assets/imgs/bundesliga-logo.png" onclick="bundesliga()">
+                <img src="../assets/imgs/brasileirao_logo.png" onclick="brasileirao()">
+                <img src="../assets/imgs/Logo_UEFA_Champions_League.png" onclick="champions()">
+                <img src="../assets/imgs/taca-copa-do-mundo.png" onclick="worldCup()">
+                <img src="../assets/imgs/bola-futebol.png" onclick="futebol()">
+                <!-- <img src="../assets/imgs/Santos_Logo.png"> -->
             </div>
         </div>
         <div class="conteudo">
             <div class="container">
-                
+                <div class="texto">
+                    <h2>Bem vindo ao futebol</h2>
+                    <div class="explicacao">
+                        Teste seus conhecimentos sobre o esporte mais praticado no mundo.
+                        Ao lado esquerdo da tela você pode apertar nas imagens das ligas para fazer o quiz de cada uma delas e ao lado direito da tela é onde você poderá vizualizar o seu desempenho e dos outros usuários por meio de dashboards.
+                    </div>
+                </div>
             </div>
         </div>
         <div class="sidebar-dash">
             <div class="dashs">
                 <h2>Dashboard</h2>
-                <img src="../assets/imgs/premier-league-logo.png">
-                <img src="../assets/imgs/La-Liga-Logo.png">
-                <img src="../assets/imgs/logo_serieA.png">
-                <img src="../assets/imgs/bundesliga-logo.png">
-                <img src="../assets/imgs/brasileirao_logo.png">
-                <img src="../assets/imgs/Logo_UEFA_Champions_League.png">
-                <img src="../assets/imgs/taca-copa-do-mundo.png">
-                <img src="../assets/imgs/bola-futebol.png">
-                <img src="../assets/imgs/Santos_Logo.png">
+                <img src="../assets/imgs/premier-league-logo.png" onclick="premierDash()">
+                <img src="../assets/imgs/La-Liga-Logo.png" onclick="laligaDash()">
+                <img src="../assets/imgs/logo_serieA.png" onclick="serieADash()">
+                <img src="../assets/imgs/bundesliga-logo.png" onclick="bundesligaDash()">
+                <img src="../assets/imgs/brasileirao_logo.png" onclick="brasileiraoDash()">
+                <img src="../assets/imgs/Logo_UEFA_Champions_League.png" onclick="championsDash()">
+                <img src="../assets/imgs/taca-copa-do-mundo.png" onclick="worldCupDash()">
+                <img src="../assets/imgs/bola-futebol.png" onclick="futebolDash()">
+                <!-- <img src="../assets/imgs/Santos_Logo.png"> -->
             </div>
         </div>
     </div>
