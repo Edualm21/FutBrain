@@ -1,48 +1,48 @@
 function premier(){
-    window.location = '../dashboard/premier.html'    
+    window.location = '../dashboard/quiz/premier.html'    
 }
 function laliga(){
-    window.location = '../dashboard/laliga.html'    
+    window.location = '../dashboard/quiz/laliga.html'    
 }
 function serieA(){
-    window.location = '../dashboard/serieA_tim.html'    
+    window.location = '../dashboard/quiz/serieA_tim.html'    
 }
 function bundesliga(){
-    window.location = '../dashboard/bundesliga.html'    
+    window.location = '../dashboard/quiz/bundesliga.html'    
 }
 function brasileirao(){
-    window.location = '../dashboard/brasileirao.html'    
+    window.location = '../dashboard/quiz/brasileirao.html'    
 }
 function champions(){
-    window.location = '../dashboard/champions.html'    
+    window.location = '../dashboard/quiz/champions.html'    
 }
 function worldCup(){
-    window.location = '../dashboard/worldCup.html'    
+    window.location = '../dashboard/quiz/worldCup.html'    
 }
 function futebol(){
-    window.location = '../dashboard/futebol.html'    
+    window.location = '../dashboard/quiz/futebol.html'    
 }
 function premierDash(){
-    window.location = '../dashboard/'    
+    window.location = '../dashboard/dashs/premier.html'    
 }
 function laligaDash(){
-    window.location = '../dashboard/'    
+    window.location = '../dashboard/dashs/laliga.html'    
 }
 function serieADash(){
-    window.location = '../dashboard/'    
+    window.location = '../dashboard/dashs/serieA.html'    
 }
 function bundesligaDash(){
-    window.location = '../dashboard/'    
+    window.location = '../dashboard/dashs/bundesliga.html'    
 }
 function brasileiraoDash(){
-    window.location = '../dashboard/'    
+    window.location = '../dashboard/dashs/brasileirao.html'    
 }
 function championsDash(){
-    window.location = '../dashboard/'    
+    window.location = '../dashboard/dashs/champions.html'    
 }
 function worldCupDash(){
-    window.location = '../dashboard/'    
+    window.location = '../dashboard/dashs/worldCup.html'    
 }
 function futebolDash(){
-    window.location = '../dashboard/'    
+    window.location = '../dashboard/dashs/futebol.html'    
 }
