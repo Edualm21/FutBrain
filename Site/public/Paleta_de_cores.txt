@@ -9,7 +9,7 @@ Azul escuro - #004AD0
 
 Paleta de cores Premier League:
 
-Ciano - #04f5ff
+Ciano - #04f5ff 
 Vermelho claro - #e90052
 Branco - #ffffff
 Roxo - #38003c
