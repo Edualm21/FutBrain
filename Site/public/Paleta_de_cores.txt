@@ -13,4 +13,4 @@ Ciano - #04f5ff
 Vermelho claro - #e90052
 Branco - #ffffff
 Roxo - #38003c
-Roxo tbm - #541c5d
+Roxo claro - #541c5d
