@@ -103,12 +103,22 @@ body{
     }
 }
 
+.questoes {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;    
+    height: 100%;
+}
+
 .respostas{
     display: flex;
     width: 90%;   
     flex-wrap: wrap;
     margin: auto;
     gap: 10px;
+    justify-content: center; 
+    align-items: center;
 }
 
 .botoes{
@@ -124,6 +134,37 @@ body{
 
 }
 
-.botoes:hover{
+.botoes:not(:disabled):hover{
+    filter: brightness(0.8);
     transform: scale(1.2);
+}
+
+.hide{
+    display: none;
+}
+
+.correct{
+    background-color: #28a745;
+}
+
+.incorrect{
+    background-color: #dc3545;
+}
+
+.answer:disabled {
+    cursor: not-allowed;
+}
+
+.msgFinal {
+    font-size: 20px;
+    text-align: center;
+
+    span{
+        display: block;
+        margin-top: 2%;
+    }
+}
+
+.start{
+    margin-top: 13%;
 }

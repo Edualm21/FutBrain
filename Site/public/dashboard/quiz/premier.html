@@ -19,23 +19,27 @@
         </div>
         <div class="container">
             <div class="perguntas">
-                <span>Qual o maior campeão da era Premier League?</span>
-                <div class="respostas">
-                    <button class="botoes">
-                        Liverpool
-                    </button>
-                    <button class="botoes">
-                        Manchester United
-                    </button>
-                    <button class="botoes">
-                        Manchester  City
-                    </button>
-                    <button class="botoes">
-                        Arsenal
-                    </button>
+                <div class="questoes hide">
+                    <span class="pergunta">Pergunta</span>
+                    <div class="respostas">
+                        <button class="botoes answer">Resposta1</button>
+                        <button class="botoes answer">Resposta2</button>
+                        <button class="botoes answer">Resposta3</button>
+                        <button class="botoes answer">Resposta4</button>
+                    </div>
+                </div>
+                <div class="comecar-avancar">
+                    <button class="start botoes">Começar</button>
+                    <button class="next botoes hide">Próxima pergunta</button>
                 </div>
             </div>
         </div>
     </div>
+
+    <script src="../../assets/js/quizPremier.js"></script>
 </body>
 </html>
+
+<script>
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+</script>
