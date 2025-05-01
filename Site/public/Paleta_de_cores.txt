@@ -31,3 +31,5 @@ O #B0242D pode ser usado em botões de ação (como “Começar Quiz”).
 O fundo #F5F7FA mantém o site leve e legível.
 
 Use #3A7CA5 para efeitos interativos e destaques inteligentes.
+
+Cor dos botões - #D9D9D9
