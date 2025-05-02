@@ -5,6 +5,7 @@
     padding: 0;
     text-decoration: none;
     font-family: 'Poppins';
+    scroll-behavior: smooth;
 }
 
 body{
@@ -19,7 +20,7 @@ body{
 
 .nav{
     width: 100%;
-    height: 10%;
+    height: 15%;
     color: #1E2A3A;
     display: flex;
     flex-direction: row;
@@ -48,6 +49,7 @@ body{
     .botao:hover{
         transform: scale(1.2);
     }
+
 }
 
 .container{
@@ -57,7 +59,7 @@ body{
 
 .frase{
     width: 50%;
-    height: 90%;
+    height: 80%;
     align-items: center;
     justify-content: center;
     display: flex;
@@ -68,6 +70,19 @@ body{
         width: 55%;
         text-align: center;
         font-weight: 600;
+    }
+}
+
+.video{
+    width: 50%;
+    height: 90%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+
+    img{
+        width: 60%;
+        height: 50%;
     }
 }
 
@@ -173,3 +188,13 @@ body{
     overflow: hidden;
 }
 
+.footer{
+    background-color: #D3D3D3;
+    color: #1E2A3A;
+    font-weight: bold;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
