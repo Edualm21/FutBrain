@@ -46,3 +46,9 @@ function worldCupDash(){
 function futebolDash(){
     window.location = '../dashboard/dashs/futebol.html'    
 }
+
+document.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('click', () => {
+      card.classList.toggle('flip');
+    });
+  });

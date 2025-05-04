@@ -1,55 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/home.css">
-    <script src="../assets/js/home.js"></script>
-    <title>Futebol</title>
+    <link rel="shortcut icon" href="../assets/imgs/logoFutBrain.svg" type="image/x-icon">
+    <title>FutBrain</title>
 </head>
+
 <body>
     <div class="home">
-        <div class="sidebar-quiz">
-            <div class="quizzes">
-                <h2>Quiz</h2>
-                <img src="../assets/imgs/premier.svg" onclick="premier()">
-                <img src="../assets/imgs/laliga.svg" onclick="laliga()">
-                <img src="../assets/imgs/serieA.svg" onclick="serieA()">
-                <img src="../assets/imgs/bundesliga.svg" onclick="bundesliga()">
-                <img src="../assets/imgs/brasileirao_logo.png" onclick="brasileirao()">
-                <img src="../assets/imgs/champions.svg" onclick="champions()">
-                <img src="../assets/imgs/taca-copa-do-mundo.png" onclick="worldCup()">
-            </div>
+        <div class="titulo">
+            <p>Bem vindo ao FutBrain, <span>usuário</span></p>
         </div>
-        <div class="conteudo">
-            <div class="container">
-                <div class="texto">
-                    <h2>Bem vindo ao futebol</h2>
-                    <div class="explicacao">
-                        Teste seus conhecimentos sobre o esporte mais praticado no mundo.
-                        Ao lado esquerdo da tela você pode apertar nas imagens das ligas para fazer o quiz de cada uma delas e ao lado direito da tela é onde você poderá vizualizar o seu desempenho e dos outros usuários por meio de dashboards.
+        <div class="cards">
+            <div class="cima">
+                <div class="card card-premier">
+                    <div class="transicao">
+                        <div class="frente">
+                            <p>Premier League</p>
+                            <div class="imagem">
+                                <img src="../assets/imgs/premier.svg">
+                            </div>
+                        </div>
+                        <div class="verso">
+                            <button class="botao" onclick="premierDash()">Quiz</button>
+                            <button class="botao" onclick="premier()">Dashboard</button>
+                        </div>
                     </div>
-                    <div class="futebol">
-                        Clique aqui para testar seus conhecimentos sobre Futebol!
+                </div>
+        
+                <div class="card card-laliga">
+                    <div class="transicao">
+                        <div class="frente">
+                            <p>La Liga</p>
+                            <div class="imagem">
+                                <img src="../assets/imgs/laliga.svg">
+                            </div>
+                        </div>
+                        <div class="verso">
+                            <button class="botao" onclick="laliga()">Quiz</button>
+                            <button class="botao" onclick="laligaDash()">Dashboard</button>
+                        </div>
                     </div>
-                    <div class="chamar">
-                        Ao lado estão todos os quizzes e dashboards sobre as ligas, agora se você quer testar seus conhecimentos do maior esporte do mundo clique no botão ao lado.
+                </div>
+        
+                <div class="card card-bundesliga">
+                    <div class="transicao">
+                        <div class="frente">
+                            <p>Bundesliga</p>
+                            <div class="imagem">
+                                <img src="../assets/imgs/bundesliga.svg">
+                            </div>
+                        </div>
+                        <div class="verso">
+                            <button class="botao" onclick="bundesliga()">Quiz</button>
+                            <button class="botao" onclick="bundesligaDash()">Dashboard</button>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="card card-serieA">
+                    <div class="transicao">
+                        <div class="frente">
+                            <p>Serie A</p>
+                            <div class="imagem">
+                                <img src="../assets/imgs/serieA.svg">
+                            </div>
+                        </div>
+                        <div class="verso">
+                            <button class="botao" onclick="serieA()">Quiz</button>
+                            <button class="botao" onclick="serieADash()">Dashboard</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="baixo">
+                <div class="card card-brasileirao">
+                    <div class="transicao">
+                        <div class="frente">
+                            <p>Brasileirão</p>
+                            <div class="imagem">
+                                <img src="../assets/imgs/brasileirao.svg">
+                            </div>
+                        </div>
+                        <div class="verso">
+                            <button class="botao" onclick="brasileirao()">Quiz</button>
+                            <button class="botao" onclick="brasileiraoDash()">Dashboard</button>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="card card-champions">
+                    <div class="transicao">
+                        <div class="frente">
+                            <p>Champions League</p>
+                            <div class="imagem">
+                                <img src="../assets/imgs/champions_logo.svg">
+                            </div>
+                        </div>
+                        <div class="verso">
+                            <button class="botao" onclick="champions()">Quiz</button>
+                            <button class="botao" onclick="championsDash()">Dashboard</button>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="card card-worldCup">
+                    <div class="transicao">
+                        <div class="frente">
+                            <p>Copa do Mundo</p>
+                            <div class="imagem">
+                                <img src="../assets/imgs/copaDoMundo.svg">
+                            </div>
+                        </div>
+                        <div class="verso">
+                            <button class="botao" onclick="worldCup()">Quiz</button>
+                            <button class="botao" onclick="worldCupDash()">Dashboard</button>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="card card-futebol">
+                    <div class="transicao">
+                        <div class="frente">
+                            <p>Futebol</p>
+                            <div class="imagem">
+                                <img src="../assets/imgs/brazuca.svg">
+                            </div>
+                        </div>
+                        <div class="verso">
+                            <button class="botao" onclick="futebol()">Quiz</button>
+                            <button class="botao" onclick="futebolDash()">Dashboard</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="sidebar-dash">
-            <div class="dashs">
-                <h2>Dashboard</h2>
-                <img src="../assets/imgs/premier.svg" onclick="premierDash()">
-                <img src="../assets/imgs/laliga.svg" onclick="laligaDash()">
-                <img src="../assets/imgs/serieA.svg" onclick="serieADash()">
-                <img src="../assets/imgs/bundesliga.svg" onclick="bundesligaDash()">
-                <img src="../assets/imgs/brasileirao_logo.png" onclick="brasileiraoDash()">
-                <img src="../assets/imgs/champions.svg" onclick="championsDash()">
-                <img src="../assets/imgs/taca-copa-do-mundo.png" onclick="worldCupDash()">
-            </div>
-        </div>
     </div>
+
+    <script src="../assets/js/home.js"></script>
 </body>
+
 </html>
