@@ -18,8 +18,8 @@
             <a href="#futebol">Futebol</a>
             <a href="#jogadores">Jogadores</a>
             <a href="#footer">Contato</a>
-            <button class="botao">Login</button>
-            <button class="botao">Cadastrar</button>
+            <button class="botao" onclick="login()">Login</button>
+            <button class="botao" onclick="cadastrar()">Cadastrar</button>
         </div>
         <div class="container">
             <div class="frase">
@@ -77,3 +77,13 @@
 </body>
 
 </html>
+
+<script>
+    function login(){
+        window.location = 'login.html'
+    }
+
+    function cadastro(){
+        window.location = 'cadastro.html'
+    }
+</script>
