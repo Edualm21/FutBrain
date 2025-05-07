@@ -3,12 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Quiz Brasileirão</title>
     <link rel="stylesheet" href="../../assets/css/braslieirao.css">
 </head>
 <body>
     <div class="brasileirao">
-        
+        <div class="sidebar">
+            <img src="../../assets/imgs/brasileirao.svg">
+            <h2>Olá, <span id="b_usuario">usuário</span></h2>
+            <div class="links">
+               <a href="../dashs/premier.html">Dashboard</a>
+               <a href="../home.html">Home</a>
+            </div>           
+       </div>
+       <div class="container">
+           <div class="perguntas">
+               <div class="questoes hide">
+                   <span class="pergunta">Pergunta</span>
+                   <div class="respostas">
+                       <button class="botoes answer">Resposta1</button>
+                       <button class="botoes answer">Resposta2</button>
+                       <button class="botoes answer">Resposta3</button>
+                       <button class="botoes answer">Resposta4</button>
+                   </div>
+               </div>
+               <div class="comecar-avancar">
+                   <button class="start botoes">Começar</button>
+                   <button class="next botoes hide">Próxima pergunta</button>
+               </div>
+           </div>
+       </div>
     </div>
+    <script src="../../assets/js/quizBr.js"></script>
 </body>
 </html>

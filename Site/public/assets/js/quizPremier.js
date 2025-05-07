@@ -96,24 +96,35 @@ function finalizarQuiz(){
 
 let listaDePerguntas = [];
 
-
-comecarQuiz.disabled = true
-
-window.onload = () => {
+window.onload = () => { // Garante que o código dentro seja executado somente após o carregamento completo da página
     fetch("/quiz/perguntas/premier")
-    .then(res => res.json())
-    .then(data => {
-        console.log("DADOS RECEBIDOS:", JSON.stringify(data, null, 2));
-        listaDePerguntas = data.map(pergunta => {
-            return {
-                pergunta: pergunta.pergunta,
-                respostas: pergunta.alternativas.map(alt => ({
-                    text: alt.resposta,
-                    correct: alt.correta == 1
-                }))
+    .then(res => res.json()) // Quando a resposta da API chega, ela é convertida para o formato JSON
+    .then(data => { // Os dados JSON convertidos são recebidos aqui
+
+        // Objeto auxiliar para agrupar as alternativas por ID da pergunta
+        const perguntasAgrupadas = {};
+
+        // Itera sobre cada item (linha) retornado pela API
+        data.forEach(item => {
+            // Verifica se já existe uma entrada para o ID da pergunta atual no objeto perguntasAgrupadas
+            if (!perguntasAgrupadas[item.idPergunta]) {
+                // Se não existir, cria uma nova entrada com a descrição da pergunta e um array vazio para as respostas
+                perguntasAgrupadas[item.idPergunta] = {
+                    pergunta: item.pergunta,
+                    respostas: []
+                };
             }
+            // Adiciona a alternativa atual ao array de respostas da pergunta correspondente
+            perguntasAgrupadas[item.idPergunta].respostas.push({
+                text: item.resposta,
+                correct: item.correta == 1 // Converte o valor do banco (0 ou 1) para um booleano (false ou true)
+            });
         });
-        comecarQuiz.disabled = false;
+
+        // Converte o objeto perguntasAgrupadas em um array de objetos, que é o formato esperado pela lógica do quiz
+        listaDePerguntas = Object.values(perguntasAgrupadas);
+
+        next(); // Chama a função next() para carregar a primeira pergunta assim que os dados são processados
     })
     .catch(err => console.error("Erro ao carregar perguntas:", err));
 }

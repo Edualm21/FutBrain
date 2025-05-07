@@ -97,7 +97,7 @@ function finalizarQuiz(){
 let listaDePerguntas = [];
 
 window.onload = () => { // Garante que o código dentro seja executado somente após o carregamento completo da página
-    fetch("/quiz/perguntas/champions")
+    fetch("/quiz/perguntas/brasileirao")
     .then(res => res.json()) // Quando a resposta da API chega, ela é convertida para o formato JSON
     .then(data => { // Os dados JSON convertidos são recebidos aqui
 
@@ -124,7 +124,7 @@ window.onload = () => { // Garante que o código dentro seja executado somente a
         // Converte o objeto perguntasAgrupadas em um array de objetos, que é o formato esperado pela lógica do quiz
         listaDePerguntas = Object.values(perguntasAgrupadas);
 
-        next(); // Chama a função next() para carregar a primeira pergunta assim que os dados são processados
+        next();
     })
     .catch(err => console.error("Erro ao carregar perguntas:", err));
 }
