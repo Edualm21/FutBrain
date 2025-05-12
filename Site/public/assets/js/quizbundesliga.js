@@ -9,7 +9,7 @@ proximaPergunta.addEventListener("click", next)
 
 var perguntaAtual = 0
 var pontos = 0
-const fkQuiz = 1
+const fkQuiz = 3
 
 function start(){
     comecarQuiz.style.display = "none"
@@ -85,7 +85,7 @@ function finalizarQuiz(){
             <span>Tente de novo ou acesse a dashboard e veja como foi seu desempenho comparado ao dos outros usuários</span>
         </p>
 
-        <button onclick = "window.location.reload()" class = "botoes" style="margin-top: 5%;">
+        <button onclick = "window.location.reload()" class = "botoes">
             Tentar novamente
         </button>  
     `
@@ -95,7 +95,7 @@ function finalizarQuiz(){
 var listaDePerguntas = [];
 
 window.onload = () => { // Garante que o código dentro seja executado somente após o carregamento completo da página
-    fetch("/quiz/perguntas/premier")
+    fetch("/quiz/perguntas/bundesliga")
     .then(res => res.json()) // Quando a resposta da API chega, ela é convertida para o formato JSON
     .then(data => { // Os dados JSON convertidos são recebidos aqui
 

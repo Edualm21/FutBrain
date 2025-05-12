@@ -9,17 +9,19 @@ proximaPergunta.addEventListener("click", next)
 
 var perguntaAtual = 0
 var pontos = 0
+const fkQuiz = 5
 
 function start(){
-    comecarQuiz.classList.add("hide")
+    comecarQuiz.style.display = "none"
     perguntas.classList.remove("hide")
     next()
 }
 
-function shuffleAlternatives(alternativas) {
-    for (let i = alternativas.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [alternativas[i], alternativas[j]] = [alternativas[j], alternativas[i]];
+function sortearAlternativas(alternativas) {
+
+    for (var i = alternativas.length - 1; i > 0; i--) {
+        const sortear = Math.floor(Math.random() * (i + 1));
+        [alternativas[i], alternativas[sortear]] = [alternativas[sortear], alternativas[i]];
     }
     return alternativas;
 }
@@ -30,7 +32,7 @@ function next(){
         return finalizarQuiz()
     }
 
-    listaDePerguntas[perguntaAtual].respostas = shuffleAlternatives(listaDePerguntas[perguntaAtual].respostas);
+    listaDePerguntas[perguntaAtual].respostas = sortearAlternativas(listaDePerguntas[perguntaAtual].respostas);
 
     respostas.innerHTML = ""
     questao.textContent = listaDePerguntas[perguntaAtual].pergunta
@@ -85,16 +87,12 @@ function finalizarQuiz(){
 
         <button onclick = "window.location.reload()" class = "botoes">
             Tentar novamente
-        </button>
-
-        <button onclick = cadastrarPontos(pontos) class = "botoes" id = "button_insert">
-            Ver dashboard
-        </button>
-            
+        </button>  
     `
+    enviarPontuacao(pontos, sessionStorage.ID_USUARIO, 1);
 }
 
-let listaDePerguntas = [];
+var listaDePerguntas = [];
 
 window.onload = () => { // Garante que o código dentro seja executado somente após o carregamento completo da página
     fetch("/quiz/perguntas/brasileirao")
@@ -121,10 +119,10 @@ window.onload = () => { // Garante que o código dentro seja executado somente a
             });
         });
 
-        // Converte o objeto perguntasAgrupadas em um array de objetos, que é o formato esperado pela lógica do quiz
+        // Converte o objeto perguntasAgrupadas em um array de objetos
         listaDePerguntas = Object.values(perguntasAgrupadas);
 
-        next();
+        next(); // Chama a função next() para carregar a primeira pergunta assim que os dados são processados
     })
     .catch(err => console.error("Erro ao carregar perguntas:", err));
 }
