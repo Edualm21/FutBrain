@@ -7,9 +7,7 @@ router.get("/buscarJogadoresPontuacoes", function (req, res) {
   graficoController.buscarJogadoresPontuacoes(req, res);
 });
 
-router.get("/grafico/buscarPontuacaoPorQuiz", function(req, res) {
-  graficoController.buscarPontuacaoPorQuiz(req, res);
-});
+
 
 router.get("/buscarMelhoresPontuadores", function (req, res) {
   graficoController.buscarMelhoresPontuadores(req, res);

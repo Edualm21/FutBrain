@@ -13,22 +13,7 @@ function buscarJogadoresPontuacoes() {
     return database.executar(instrucaoSql);
 }
 
-function buscarPontuacaoPorQuiz() {
-    const instrucaoSql = `
-        SELECT 
-            u.idUsuario as 'Id',
-            u.nome as 'Nome',
-            r.pontos as 'Pontos',
-            q.liga as 'Quiz'
-        FROM resultado as r
-        JOIN usuario as u ON r.fkUsuario = u.idUsuario
-        JOIN quizzes as q ON r.fkQuiz = q.idQuiz
-        ORDER BY r.pontos DESC;
 
-    `;
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
-}
 
 function buscarMelhoresPontuadores() {
     const instrucaoSql = `
@@ -58,5 +43,4 @@ function buscarMelhoresPontuadores() {
 module.exports = {
     buscarJogadoresPontuacoes,
     buscarMelhoresPontuadores,
-    buscarPontuacaoPorQuiz
 }
