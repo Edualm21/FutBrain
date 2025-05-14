@@ -54,6 +54,32 @@ function next(){
     })
 }
 
+function enviarPontuacao(pontos, idUsuario, fkQuiz) {
+    fetch("/quiz/cadastrarPontos", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            pontos: pontos,
+            idUsuario: idUsuario,
+            fkQuiz: fkQuiz
+        })
+    })
+    .then(res => {
+        if (!res.ok) {
+            throw new Error("Erro ao enviar pontuação.");
+        }
+        return res.json();
+    })
+    .then(data => {
+        console.log("Pontuação cadastrada com sucesso:", data);
+    })
+    .catch(err => {
+        console.error("Erro ao enviar pontuação:", err);
+    });
+}
+
 function selecionarRespostas(event){
     const respostaClicada = event.target
     

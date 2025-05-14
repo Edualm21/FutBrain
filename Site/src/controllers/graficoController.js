@@ -14,6 +14,19 @@ function buscarPontuacao(req, res) {
     });
 }
 
+function buscarPontuacaoPorQuiz(req, res) {
+    graficoModel.buscarPontuacaoPorQuiz().then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhuma posição encontrada!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar os pontos. ", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage)
+    });
+}
 
 function buscarJogadoresPontuacoes(req, res) {
     graficoModel.buscarJogadoresPontuacoes()
@@ -46,5 +59,6 @@ function buscarMelhoresPontuadores(req, res) {
 module.exports = {
     buscarPontuacao,
     buscarJogadoresPontuacoes,
-    buscarMelhoresPontuadores
+    buscarMelhoresPontuadores,
+    buscarPontuacaoPorQuiz
 }

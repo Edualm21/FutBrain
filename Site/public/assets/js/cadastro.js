@@ -61,3 +61,23 @@ fetch("/usuarios/cadastrar", {
 })
 }   
 }
+
+function mostrarSenha() {
+    var senha = document.getElementById('input_senha')
+    var imgSenha = document.getElementById('imgSenha')
+
+    senha.type = 'text'
+    imgSenha.src = 'imgs/visualizar.png'
+    imgSenha.onclick = esconderSenha
+    
+}
+
+function esconderSenha() {
+    var senha = document.getElementById('input_senha')
+    var imgSenha = document.getElementById('imgSenha')
+
+    senha.type = 'password'
+    imgSenha.src = 'imgs/esconder.png'
+    imgSenha.onclick = mostrarSenha
+    
+}

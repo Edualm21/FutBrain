@@ -92,6 +92,32 @@ function finalizarQuiz(){
     enviarPontuacao(pontos, sessionStorage.ID_USUARIO, 1);
 }
 
+function enviarPontuacao(pontos, idUsuario, fkQuiz) {
+    fetch("/quiz/cadastrarPontos", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            pontos: pontos,
+            idUsuario: idUsuario,
+            fkQuiz: fkQuiz
+        })
+    })
+    .then(res => {
+        if (!res.ok) {
+            throw new Error("Erro ao enviar pontuação.");
+        }
+        return res.json();
+    })
+    .then(data => {
+        console.log("Pontuação cadastrada com sucesso:", data);
+    })
+    .catch(err => {
+        console.error("Erro ao enviar pontuação:", err);
+    });
+}
+
 var listaDePerguntas = [];
 
 window.onload = () => { // Garante que o código dentro seja executado somente após o carregamento completo da página
