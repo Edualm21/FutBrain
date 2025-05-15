@@ -6,7 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../../assets/css/premierDash.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <title>Dashboard Premier League</title> 
+  <title>Dashboard Premier League</title>
+  <script>
+    const liga = sessionStorage.getItem("LIGA_ATUAL");
+    console.log("Liga atual:", liga);
+  </script>
 </head>
 
 <body>
@@ -25,10 +29,19 @@
       <div class="conteudo">
 
         <div class="kpis">
-          <div class="kpi1" id="mediaPontuacaoJogadores"><p>Média de pontos de todos os jogadores</p></div>
-          <div class="kpi2" id="ultimaPontuacao"><p>Maior pontuação</p></div>
-          <div class="kpi3" id="topTresPontuadores"><p>Top três pontuadores</p></div>
-          <div class="kpi4" id="melhoresTempos"><p>Melhores tempos</p></div>
+          <div class="kpi1" id="mediaPontuacaoJogadores">
+            <p>Média de pontos de todos os jogadores</p>
+          </div>
+          <div class="kpi2" id="ultimaPontuacao">
+            <p>Maior pontuação</p>
+          </div>
+          <div class="kpi3">
+            <p>Top três pontuadores</p>
+            <ul id="topTresPontuadores"></ul>
+          </div>
+          <div class="kpi4" id="melhoresTempos">
+            <p>Melhores tempos</p>
+          </div>
         </div>
 
         <div class="graficos">
@@ -43,7 +56,6 @@
       </div>
     </div>
   </div>
-
   <script src="../../assets/js/dashPremier.js"></script>
 </body>
 </html>

@@ -89,7 +89,7 @@ function finalizarQuiz(){
             Tentar novamente
         </button>  
     `
-    enviarPontuacao(pontos, sessionStorage.ID_USUARIO, 1);
+    enviarPontuacao(pontos, sessionStorage.ID_USUARIO, fkQuiz);
 }
 
 function enviarPontuacao(pontos, idUsuario, fkQuiz) {

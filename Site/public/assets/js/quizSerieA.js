@@ -81,15 +81,15 @@ function finalizarQuiz(){
     proximaPergunta.classList.add("hide")
 
     perguntas.innerHTML = `
-        <p class = "msgFinal"> Você acertou ${pontos} de ${qtdPerguntas} perguntas!
+        <p class = "msgFinal"> <p style="margin-top:-10%">Você acertou ${pontos} de ${qtdPerguntas} perguntas!</p>
             <span>Tente de novo ou acesse a dashboard e veja como foi seu desempenho comparado ao dos outros usuários</span>
         </p>
 
-        <button onclick = "window.location.reload()" class = "botoes">
+        <button onclick = "window.location.reload()" class = "botoes" style="margin-top: 50%;">
             Tentar novamente
         </button>  
     `
-    enviarPontuacao(pontos, sessionStorage.ID_USUARIO, 1);
+    enviarPontuacao(pontos, sessionStorage.ID_USUARIO, fkQuiz);
 }
 
 function enviarPontuacao(pontos, idUsuario, fkQuiz) {
@@ -117,7 +117,6 @@ function enviarPontuacao(pontos, idUsuario, fkQuiz) {
         console.error("Erro ao enviar pontuação:", err);
     });
 }
-
 var listaDePerguntas = [];
 
 window.onload = () => { // Garante que o código dentro seja executado somente após o carregamento completo da página

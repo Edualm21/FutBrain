@@ -15,16 +15,27 @@ CREATE TABLE quizzes(
     liga VARCHAR(45) UNIQUE
 );
 
-CREATE TABLE resultado(
+SELECT 
+    u.idUsuario,
+    u.nome AS nome_usuario,
+    q.liga,
+    r.pontos,
+    r.dtQuiz
+FROM resultado r
+JOIN usuario u ON r.fkUsuario = u.idUsuario
+JOIN quizzes q ON r.fkQuiz = q.idQuiz
+WHERE u.idUsuario = 1  -- Substitua pelo ID real do usuário
+ORDER BY q.liga, r.pontos DESC;
+
+CREATE TABLE resultado (
+    idResultado INT AUTO_INCREMENT PRIMARY KEY,
     fkUsuario INT,
     fkQuiz INT,
     pontos INT,
     dtQuiz DATETIME DEFAULT CURRENT_TIMESTAMP,
-    PRIMARY KEY (fkUsuario, fkQuiz),
-    Foreign Key (fkUsuario) REFERENCES Usuario(idUsuario),
-    Foreign Key (fkQuiz) REFERENCES Quizzes(idQuiz)
+    FOREIGN KEY (fkUsuario) REFERENCES Usuario(idUsuario),
+    FOREIGN KEY (fkQuiz) REFERENCES Quizzes(idQuiz)
 );
-
 
 CREATE TABLE perguntas(
     idPergunta INT AUTO_INCREMENT,
@@ -33,7 +44,6 @@ CREATE TABLE perguntas(
     Foreign Key (fkQuiz) REFERENCES Quizzes(idQuiz),
     PRIMARY KEY(idPergunta, fkQuiz)
 );
- 
 
 
 CREATE TABLE alternativas(

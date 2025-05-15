@@ -64,15 +64,16 @@ fetch("/usuarios/cadastrar", {
 
 function mostrarSenha() {
     const input = document.getElementById("input_senha");
-    const icon = document.getElementById("verSenha");
+    const olhoFechado = document.getElementById("olhoFechado");
+    const olhoAberto = document.getElementById("olhoAberto");
 
     if (input.type === "password") {
         input.type = "text";
-        icon.classList.remove("bi-eye-slash");
-        icon.classList.add("bi-eye");
+        olhoFechado.classList.add("hide");
+        olhoAberto.classList.remove("hide");
     } else {
         input.type = "password";
-        icon.classList.remove("bi-eye");
-        icon.classList.add("bi-eye-slash");
+        olhoFechado.classList.remove("hide");
+        olhoAberto.classList.add("hide");
     }
 }

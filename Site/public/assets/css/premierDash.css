@@ -102,6 +102,7 @@ body{
     text-align: center;
     font-size: 15px;
     display: flex;
+    flex-direction: column;
 
     p{
         margin-top: 4%;

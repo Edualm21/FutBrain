@@ -14,13 +14,15 @@ function buscarPontuacao(req, res) {
     });
 }
 
-
-
 function buscarJogadoresPontuacoes(req, res) {
-    graficoModel.buscarJogadoresPontuacoes()
-        .then(resultados => {
-            res.json(resultados);
-        })
+    const { liga } = req.body;
+
+    if (!liga) {
+        return res.status(400).json({ erro: 'Liga não informada.' });
+    }
+
+    graficoModel.buscarJogadoresPontuacoes(liga)
+        .then(resultados => res.json(resultados))
         .catch(erro => {
             console.error('Erro ao buscar pontuações dos jogadores: ', erro);
             res.status(500).json({ erro: 'Erro ao buscar as pontuações dos jogadores.' });
@@ -43,9 +45,19 @@ function buscarMelhoresPontuadores(req, res) {
         });
 }
 
+function buscarPontuacaoUsuarioPorLiga(req, res) {
+    const idUsuario = req.params.idUsuario;
+    graficoModel.buscarPontuacaoUsuarioPorLiga(idUsuario)
+        .then(resultados => res.json(resultados))
+        .catch(erro => {
+            console.error('Erro ao buscar pontuação do usuário por liga:', erro);
+            res.status(500).json({ erro: 'Erro ao buscar os dados.' });
+        });
+}
 
 module.exports = {
     buscarPontuacao,
     buscarJogadoresPontuacoes,
     buscarMelhoresPontuadores,
+    buscarPontuacaoUsuarioPorLiga
 }

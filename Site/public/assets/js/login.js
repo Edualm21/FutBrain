@@ -70,11 +70,11 @@ function mostrarSenha() {
 
     if (input.type === "password") {
         input.type = "text";
-        icon.classList.remove("bi-eye-slash");
-        icon.classList.add("bi-eye");
+        icon.classList.remove("mostrar");
+        icon.classList.add("ocultar");
     } else {
         input.type = "password";
-        icon.classList.remove("bi-eye");
-        icon.classList.add("bi-eye-slash");
+        icon.classList.remove("ocultar");
+        icon.classList.add("mostrar");
     }
 }
