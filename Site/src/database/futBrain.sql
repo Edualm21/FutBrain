@@ -15,18 +15,6 @@ CREATE TABLE quizzes(
     liga VARCHAR(45) UNIQUE
 );
 
-SELECT 
-    u.idUsuario,
-    u.nome AS nome_usuario,
-    q.liga,
-    r.pontos,
-    r.dtQuiz
-FROM resultado r
-JOIN usuario u ON r.fkUsuario = u.idUsuario
-JOIN quizzes q ON r.fkQuiz = q.idQuiz
-WHERE u.idUsuario = 1  -- Substitua pelo ID real do usuário
-ORDER BY q.liga, r.pontos DESC;
-
 CREATE TABLE resultado (
     idResultado INT AUTO_INCREMENT PRIMARY KEY,
     fkUsuario INT,
@@ -44,7 +32,6 @@ CREATE TABLE perguntas(
     Foreign Key (fkQuiz) REFERENCES Quizzes(idQuiz),
     PRIMARY KEY(idPergunta, fkQuiz)
 );
-
 
 CREATE TABLE alternativas(
     idAlternativa INT AUTO_INCREMENT,
@@ -112,7 +99,6 @@ INSERT INTO perguntas (fkQuiz, descricao) VALUES
 (1, 'Quem é o treinador do Arsenal em 2023/24?'),
 (1, 'Qual clube usava o estádio White Hart Lane até 2017?'),
 (1, 'Qual jogador marcou mais assistências em uma única temporada da Premier League?');
-
 
 INSERT INTO alternativas (fkPergunta, resposta, correta) VALUES
 (1, 'Arsenal', 1),
@@ -565,18 +551,18 @@ INSERT INTO alternativas (fkPergunta, resposta, correta) VALUES
     (94, 'Robert Lewandowski', 0),
     (94, 'Klaus Fischer', 0),
     (94, 'Jupp Heynckes', 0),
-    (95, '2016–17', 1),
-    (95, '2014–15', 0),
-    (95, '2018–19', 0),
-    (95, '2012–13', 0),
+    (95, '2016-17', 1),
+    (95, '2014-15', 0),
+    (95, '2018-19', 0),
+    (95, '2012-13', 0),
     (96, 'Schalke 04', 1),
     (96, 'Borussia Dortmund', 0),
     (96, 'VfL Bochum', 0),
     (96, 'MSV Duisburg', 0),
-    (97, '2003–04', 1),
-    (97, '1992–93', 0),
-    (97, '2008–09', 0),
-    (97, '1987–88', 0),
+    (97, '2003-04', 1),
+    (97, '1992-93', 0),
+    (97, '2008-09', 0),
+    (97, '1987-88', 0),
     (98, '8 vezes', 1),
     (98, '5 vezes', 0),
     (98, '10 vezes', 0),
@@ -1011,9 +997,9 @@ INSERT INTO alternativas (fkPergunta, resposta, correta) VALUES
     (181, '46', 0),
     (181, '35', 0),
     (181, '42', 0),
-    (182, 'Cruzeiro (2014)', 1),
+    (182, 'Flamengo (2019)', 1),
+    (182, 'Cruzeiro (2003)', 0),
     (182, 'Corinthians (2015)', 0),
-    (182, 'Flamengo (2019)', 0),
     (182, 'Atlético Mineiro (2021)', 0),
     (183, '161', 1),
     (183, '154', 0),
