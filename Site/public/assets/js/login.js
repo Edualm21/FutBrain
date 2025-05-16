@@ -66,15 +66,16 @@ function entrar() {
 
 function mostrarSenha() {
     const input = document.getElementById("input_senha");
-    const icon = document.getElementById("verSenha");
+    const olhoFechado = document.getElementById("olhoFechado");
+    const olhoAberto = document.getElementById("olhoAberto");
 
     if (input.type === "password") {
         input.type = "text";
-        icon.classList.remove("mostrar");
-        icon.classList.add("ocultar");
+        olhoFechado.classList.add("hide");
+        olhoAberto.classList.remove("hide");
     } else {
         input.type = "password";
-        icon.classList.remove("ocultar");
-        icon.classList.add("mostrar");
+        olhoFechado.classList.remove("hide");
+        olhoAberto.classList.add("hide");
     }
 }
