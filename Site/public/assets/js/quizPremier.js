@@ -14,6 +14,7 @@ const fkQuiz = 1
 function start(){
     comecarQuiz.style.display = "none"
     perguntas.classList.remove("hide")
+    iniciarCronometro()
     next()
 }
 
@@ -76,23 +77,40 @@ function selecionarRespostas(event){
     perguntaAtual++
 }
 
+let cronometroIntervalo;
+let tempoDecorrido = 0;
+
+function iniciarCronometro() {
+  tempoDecorrido = 0;
+  cronometroIntervalo = setInterval(() => {
+    tempoDecorrido++;
+    document.getElementById('cronometro').innerText = `Tempo: ${tempoDecorrido}s`;
+  }, 1000);
+}
+
+function pararCronometro() {
+  clearInterval(cronometroIntervalo);
+  return tempoDecorrido;
+}
+
 function finalizarQuiz(){
     const qtdPerguntas = listaDePerguntas.length
     proximaPergunta.classList.add("hide")
+    const tempo = pararCronometro();
 
     perguntas.innerHTML = `
-        <p class = "msgFinal"> <p style="margin-top:-10%">Você acertou ${pontos} de ${qtdPerguntas} perguntas!</p>
-            <span>Tente de novo ou acesse a dashboard e veja como foi seu desempenho comparado ao dos outros usuários</span>
+        <p class = "msgFinal"> <p style="margin-top:-10% color: #FFFFFF;">Você acertou ${pontos} de ${qtdPerguntas} perguntas!</p>
+            <span style = "color: #FFFFFF;">Tente de novo ou acesse a dashboard e veja como foi seu desempenho comparado ao dos outros usuários</span>
         </p>
 
         <button onclick = "window.location.reload()" class = "botoes" style="margin-top: 50%;">
             Tentar novamente
         </button>  
     `
-    enviarPontuacao(pontos, sessionStorage.ID_USUARIO, fkQuiz);
+    enviarPontuacao(pontos, sessionStorage.ID_USUARIO, fkQuiz, tempo);
 }
 
-function enviarPontuacao(pontos, idUsuario, fkQuiz) {
+function enviarPontuacao(pontos, idUsuario, fkQuiz, tempo) {
     fetch("/quiz/cadastrarPontos", {
         method: "POST",
         headers: {
@@ -101,7 +119,8 @@ function enviarPontuacao(pontos, idUsuario, fkQuiz) {
         body: JSON.stringify({
             pontos: pontos,
             idUsuario: idUsuario,
-            fkQuiz: fkQuiz
+            fkQuiz: fkQuiz,
+            tempo: tempo
         })
     })
     .then(res => {
@@ -120,17 +139,17 @@ function enviarPontuacao(pontos, idUsuario, fkQuiz) {
 
 var listaDePerguntas = [];
 
-window.onload = () => { // Garante que o código dentro seja executado somente após o carregamento completo da página
+window.onload = () => { 
     fetch("/quiz/perguntas/premier")
-    .then(res => res.json()) // Quando a resposta da API chega, ela é convertida para o formato JSON
-    .then(data => { // Os dados JSON convertidos são recebidos aqui
+    .then(res => res.json()) 
+    .then(data => { 
 
-        // Objeto auxiliar para agrupar as alternativas por ID da pergunta
+        
         const perguntasAgrupadas = {};
 
-        // Itera sobre cada item (linha) retornado pela API
+        
         data.forEach(item => {
-            // Verifica se já existe uma entrada para o ID da pergunta atual no objeto perguntasAgrupadas
+            
             if (!perguntasAgrupadas[item.idPergunta]) {
                 // Se não existir, cria uma nova entrada com a descrição da pergunta e um array vazio para as respostas
                 perguntasAgrupadas[item.idPergunta] = {
@@ -141,14 +160,14 @@ window.onload = () => { // Garante que o código dentro seja executado somente a
             // Adiciona a alternativa atual ao array de respostas da pergunta correspondente
             perguntasAgrupadas[item.idPergunta].respostas.push({
                 text: item.resposta,
-                correct: item.correta == 1 // Converte o valor do banco (0 ou 1) para um booleano (false ou true)
+                correct: item.correta == 1 
             });
         });
 
         // Converte o objeto perguntasAgrupadas em um array de objetos
         listaDePerguntas = Object.values(perguntasAgrupadas);
 
-        next(); // Chama a função next() para carregar a primeira pergunta assim que os dados são processados
+        next();
     })
     .catch(err => console.error("Erro ao carregar perguntas:", err));
 }

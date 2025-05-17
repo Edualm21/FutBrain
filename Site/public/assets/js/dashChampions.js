@@ -2,7 +2,7 @@ fetch('/grafico/buscarPontuacao')
   .then(response => response.json())
   .then(data => {
     const media = data[0]?.['avg(pontos)'] || 0;
-    document.getElementById('mediaPontuacaoJogadores').innerText = parseFloat(media).toFixed(2);
+    document.getElementById('mediaValor').innerText = parseFloat(media).toFixed(2);
   })
   .catch(error => console.error('Erro ao buscar média de pontuação:', error));
 
@@ -14,7 +14,6 @@ fetch('/grafico/buscarMelhoresPontuadores')
     console.log("Dados recebidos:", data); 
     const top3List = document.getElementById('topTresPontuadores');
     top3List.innerHTML = '';
-    const jogadores = data.map(item => item.nome_jogador);
 
     data.slice(0, 3).forEach((player, index) => {
       const listItem = document.createElement('li');
@@ -42,7 +41,10 @@ fetch('/grafico/buscarJogadoresPontuacoes', {
 
     const chartData = {
       labels: jogadores,
-      datasets: [{ label: 'Pontuação dos jogadores', data: pontuacoes, backgroundColor: '#fafafc' }],
+      datasets: [{ 
+        label: 'Pontuação dos jogadores', 
+        data: pontuacoes, 
+        backgroundColor: '#0000FF' }],
     };
 
     new Chart(document.getElementById('grafico1'), { type: 'bar', data: chartData });
@@ -64,7 +66,7 @@ fetch(`/grafico/buscarPontuacaoUsuarioPorLiga/${idUsuario}`)
       datasets: [{
         label: 'Maior pontuação por liga',
         data: pontos,
-        backgroundColor: '#5c94fc'
+        backgroundColor: '#0000FF'
       }]
     };
 

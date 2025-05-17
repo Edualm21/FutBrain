@@ -118,7 +118,7 @@
 }
 
 .card-premier .verso .botao {
-    background: #004AD0;
+    background: #FFF;
 }
 
 .card-laliga {
@@ -126,7 +126,7 @@
 }
 
 .card-laliga .verso .botao {
-    background: #F00;
+    background: #FFF;
 }
 
 .card-bundesliga {
@@ -143,7 +143,7 @@
 }
 
 .card-serieA .verso .botao {
-    background: #508DD3;
+    background: #FFF;
 }
 
 .card-brasileirao {
@@ -151,7 +151,7 @@
 }
 
 .card-brasileirao .verso .botao {
-    background: #DFBD05;
+    background: #FFF;
 }
 
 .card-champions {
@@ -159,8 +159,8 @@
 }
 
 .card-champions .verso .botao {
-    background: #0B0B0B;
-    color: #FFF;
+    background: #FFF;
+    color: #000;
 }
 
 .card-worldCup {
@@ -168,7 +168,7 @@
 }
 
 .card-worldCup .verso .botao {
-    background: #1077C3;
+    background: #FFF;
 }
 
 .card-futebol {
@@ -176,5 +176,5 @@
 }
 
 .card-futebol .verso .botao {
-    background: #FFD900;
+    background: #FFF;
 }

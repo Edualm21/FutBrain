@@ -72,30 +72,25 @@ function listarPontos(req, res) {
 }
 
 function cadastrarPontos(req, res) {
-  var pontos = req.body.pontos;
-  var idUsuario = req.body.idUsuario;
-  var fkQuiz = req.body.fkQuiz
+  const { idUsuario, fkQuiz, pontos, tempo } = req.body;
 
-  if (pontos == undefined) {
-    res.status(400).send("pontos está undefined!");
-  } else if (idUsuario == undefined) {
-    res.status(400).send("idUsuario está undefined!");
-  } else if(fkQuiz == undefined){
-    res.status(400).send("FkQuiz está undefined")
-  } else {
-    quizModel.cadastrarPontos(idUsuario, fkQuiz, pontos)
-      .then((resultado) => {
-        res.status(201).json(resultado);
-      })
-      .catch((erro) => {
-        console.log(erro);
-        console.log(
-          "\nHouve um erro ao realizar o cadastro dos pontos! Erro: ",
-          erro.sqlMessage
-        );
-        res.status(500).json(erro.sqlMessage);
-      });
-  }
+  quizModel.cadastrarPontos(idUsuario, fkQuiz, pontos, tempo)
+    .then(resultado => res.status(200).json(resultado))
+    .catch(erro => {
+      console.error(erro);
+      res.status(500).json({ erro: "Erro ao cadastrar pontuação." });
+    });
+}
+
+function tempoMedio(req, res) {
+  const fkQuiz = req.params.fkQuiz;
+
+  quizModel.tempoMedioPorQuiz(fkQuiz)
+    .then(resultado => res.status(200).json(resultado[0]))
+    .catch(erro => {
+      console.error("Erro ao buscar tempo médio:", erro);
+      res.status(500).json({ erro: "Erro ao buscar tempo médio." });
+    });
 }
 
 module.exports = {

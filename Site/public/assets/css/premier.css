@@ -111,6 +111,10 @@ body {
     height: 100%;
 }
 
+.pergunta{
+    color: #FFF;
+}
+
 .respostas {
     display: flex;
     width: 90%;
@@ -119,6 +123,7 @@ body {
     gap: 10px;
     justify-content: center;
     align-items: center;
+    margin-top: 8%;
 }
 
 .botoes {
@@ -132,6 +137,7 @@ body {
     justify-content: center;
     cursor: pointer;
     font-weight: bold;
+    margin-top: 5%;
 }
 
 .botoes:not(:disabled):hover {
@@ -164,13 +170,10 @@ body {
     span {
         display: block;
         margin-top: 2%;
-        background-color: rgba(14, 30, 91, 0.5);
         font-weight: bold;
         align-self: center;
         font-size: 20px;
     }
-
-
 }
 
 .comecar-avancar {
@@ -182,5 +185,4 @@ body {
         margin-top: 52%;
     }
 }
-
 

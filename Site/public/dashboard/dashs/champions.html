@@ -4,19 +4,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../../assets/css/chmapionsDash.css">
+  <link rel="stylesheet" href="../../assets/css/championsDash.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <title>Dashboard Premier League</title>
   <script>
     const liga = sessionStorage.getItem("LIGA_ATUAL");
-    console.log("Liga atual:", liga);
   </script>
 </head>
 
 <body>
   <div class="champions">
     <div class="backHome">
-      <img src="../../assets/imgs/premier.svg" alt="">
+      <img src="../../assets/imgs/champions.svg">
       <a href="../home.html">Home</a>
     </div>
 
@@ -30,7 +29,7 @@
 
         <div class="kpis">
           <div class="kpi1" id="mediaPontuacaoJogadores">
-            <p>Média de pontos de todos os jogadores</p>
+            <span>Média de pontos de todos os jogadores<p id="mediaValor"> </p></span>
           </div>
           <div class="kpi2" id="ultimaPontuacao">
             <p>Maior pontuação</p>
@@ -56,6 +55,6 @@
       </div>
     </div>
   </div>
-  <script src="../../assets/js/dashFutebol.js"></script>
+  <script src="../../assets/js/dashChampions.js"></script>
 </body>
 </html>

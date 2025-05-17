@@ -135,13 +135,15 @@ function listarPontos() {
   return database.executar(instrucao);
 }
 
-function cadastrarPontos(idUsuario, fkQuiz, pontos) {
+function cadastrarPontos(idUsuario, fkQuiz, pontos, tempo) {
   const instrucao = `
-    INSERT INTO resultado (fkUsuario, fkQuiz, pontos) VALUES ( '${idUsuario}', '${fkQuiz}' ,'${pontos}');
+    INSERT INTO resultado (fkUsuario, fkQuiz, pontos, tempo_segundos) VALUES 
+    ('${idUsuario}', '${fkQuiz}', '${pontos}', '${tempo}');
   `;
   console.log("Executando a instrução SQL: \n" + instrucao);
   return database.executar(instrucao);
 }
+
 
 
 module.exports = {

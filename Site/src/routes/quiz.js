@@ -12,5 +12,4 @@ router.get("/perguntas/copa", quizController.buscarPerguntasCopa);
 router.get("/listarPontos", function (req, res) {quizController.listarPontos(req, res);});
 router.post("/cadastrarPontos", function (req, res) {quizController.cadastrarPontos(req, res);});
 
-
 module.exports = router;

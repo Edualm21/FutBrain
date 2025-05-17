@@ -63,10 +63,31 @@ function buscarPontuacao() {
     return database.executar(instrucaoSql);
 }
 
+function tempoMedioPorQuiz(fkQuiz) {
+  const instrucao = `
+    SELECT AVG(tempo_segundos) AS tempoMedio
+    FROM resultado
+    WHERE fkQuiz = ${fkQuiz};
+  `;
+  return database.executar(instrucao);
+}
+
+function ultimoTempoUsuario(idUsuario, fkQuiz) {
+  const instrucao = `
+    SELECT tempo_segundos
+    FROM resultado
+    WHERE fkUsuario = ${idUsuario} AND fkQuiz = ${fkQuiz}
+    ORDER BY idResultado DESC
+    LIMIT 1;
+  `;
+  return database.executar(instrucao);
+}
 
 module.exports = {
     buscarJogadoresPontuacoes,
     buscarMelhoresPontuadores,
     buscarPontuacaoUsuarioPorLiga,
-    buscarPontuacao
+    buscarPontuacao,
+    tempoMedioPorQuiz,
+    ultimoTempoUsuario
 }

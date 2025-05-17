@@ -21,6 +21,7 @@ CREATE TABLE resultado (
     fkQuiz INT,
     pontos INT,
     dtQuiz DATETIME DEFAULT CURRENT_TIMESTAMP,
+    tempo_segundos INT,
     FOREIGN KEY (fkUsuario) REFERENCES Usuario(idUsuario),
     FOREIGN KEY (fkQuiz) REFERENCES Quizzes(idQuiz)
 );

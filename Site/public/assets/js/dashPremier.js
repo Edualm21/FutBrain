@@ -1,20 +1,20 @@
+const fkQuiz = 1;
+
 fetch('/grafico/buscarPontuacao')
   .then(response => response.json())
   .then(data => {
     const media = data[0]?.['avg(pontos)'] || 0;
-    document.getElementById('mediaPontuacaoJogadores').innerText = parseFloat(media).toFixed(2);
+    document.getElementById('mediaValor').innerText = parseFloat(media).toFixed(2);
   })
   .catch(error => console.error('Erro ao buscar média de pontuação:', error));
-
 
 // Buscar top 3 pontuadores
 fetch('/grafico/buscarMelhoresPontuadores')
   .then(response => response.json())
   .then(data => {
-    console.log("Dados recebidos:", data); 
+
     const top3List = document.getElementById('topTresPontuadores');
     top3List.innerHTML = '';
-    const jogadores = data.map(item => item.nome_jogador);
 
     data.slice(0, 3).forEach((player, index) => {
       const listItem = document.createElement('li');
@@ -42,7 +42,11 @@ fetch('/grafico/buscarJogadoresPontuacoes', {
 
     const chartData = {
       labels: jogadores,
-      datasets: [{ label: 'Pontuação dos jogadores', data: pontuacoes, backgroundColor: '#fafafc' }],
+      datasets: [{ 
+        label: 'Pontuação dos jogadores', 
+        data: pontuacoes, 
+        backgroundColor: '#541C5D',
+        color: '#000' }],
     };
 
     new Chart(document.getElementById('grafico1'), { type: 'bar', data: chartData });
@@ -64,7 +68,8 @@ fetch(`/grafico/buscarPontuacaoUsuarioPorLiga/${idUsuario}`)
       datasets: [{
         label: 'Maior pontuação por liga',
         data: pontos,
-        backgroundColor: '#5c94fc'
+        backgroundColor: '#541C5D',
+        color: '#000'
       }]
     };
 
@@ -75,3 +80,25 @@ fetch(`/grafico/buscarPontuacaoUsuarioPorLiga/${idUsuario}`)
   })
   .catch(error => console.error('Erro ao buscar pontuação por liga:', error));
 
+  fetch(`/grafico/buscarTempoMedio/${fkQuiz}`)
+  .then(res => res.json())
+  .then(data => {
+    const tempo = data.tempoMedio || 0;
+    const ul = document.getElementById('listaMelhoresTempos');
+    const li = document.createElement('li');
+    li.textContent = `Tempo médio: ${tempo.toFixed(2)}s`;
+    ul.appendChild(li);
+  })
+  .catch(err => console.error('Erro ao buscar tempo médio:', err));
+
+// Buscar último tempo do usuário
+fetch(`/grafico/buscarUltimoTempo/${idUsuario}/${fkQuiz}`)
+  .then(res => res.json())
+  .then(data => {
+    const tempo = data.tempo_segundos || 0;
+    const ul = document.getElementById('listaMelhoresTempos');
+    const li = document.createElement('li');
+    li.textContent = `Seu último tempo: ${tempo}s`;
+    ul.appendChild(li);
+  })
+  .catch(err => console.error('Erro ao buscar último tempo:', err));

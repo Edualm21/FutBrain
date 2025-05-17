@@ -9,14 +9,13 @@
   <title>Dashboard Premier League</title>
   <script>
     const liga = sessionStorage.getItem("LIGA_ATUAL");
-    console.log("Liga atual:", liga);
   </script>
 </head>
 
 <body>
   <div class="bundesliga">
     <div class="backHome">
-      <img src="../../assets/imgs/premier.svg" alt="">
+      <img src="../../assets/imgs/bundesliga.svg" alt="">
       <a href="../home.html">Home</a>
     </div>
 
@@ -30,7 +29,7 @@
 
         <div class="kpis">
           <div class="kpi1" id="mediaPontuacaoJogadores">
-            <p>Média de pontos de todos os jogadores</p>
+            <span>Média de pontos de todos os jogadores<p id="mediaValor"> </p></span>
           </div>
           <div class="kpi2" id="ultimaPontuacao">
             <p>Maior pontuação</p>
