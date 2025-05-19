@@ -9,12 +9,11 @@
   <title>Dashboard Premier League</title>
   <script>
     const liga = sessionStorage.getItem("LIGA_ATUAL");
-    console.log("Liga atual:", liga);
   </script>
 </head>
 
 <body>
-  <div class="futebol">
+  <div class="futebol" onload="validarSessao()">
     <div class="backHome">
       <img src="../../assets/imgs/premier.svg" alt="">
       <a href="../home.html">Home</a>
@@ -57,5 +56,6 @@
     </div>
   </div>
   <script src="../../assets/js/dashFutebol.js"></script>
+  <script src="../../assets/js/sessao.js"></script>
 </body>
 </html>

@@ -21,6 +21,7 @@ function start() {
     perguntas.classList.remove("hide")
     iniciarCronometro()
     next()
+    // document.getElementById("cronometro").classList.remove("hide")
 }
 
 function sortearAlternativas(alternativas) {
@@ -66,9 +67,9 @@ function selecionarRespostas(event) {
 
     document.querySelectorAll(".answer").forEach(button => {
         if (button.dataset.correct) {
-            button.classList.add("correct")
+            button.classList.add("correto")
         } else {
-            button.classList.add("incorrect")
+            button.classList.add("incorreto")
         }
 
         button.disabled = true
@@ -79,20 +80,25 @@ function selecionarRespostas(event) {
     perguntaAtual++
 }
 
-let cronometroIntervalo;
-let tempoDecorrido = 0;
+var cronometroIntervalo;
+var segundos = 0;
+var minutos = 0;
 
 function iniciarCronometro() {
-    tempoDecorrido = 0;
+    segundos = 0;
     cronometroIntervalo = setInterval(() => {
-        tempoDecorrido++;
-        document.getElementById('cronometro').innerText = `Tempo: ${tempoDecorrido}s`;
+        segundos++;
+        if (segundos == 60) {
+            minutos++
+            segundos = 0
+        }
+        document.getElementById('cronometro').innerHTML = `<p>${String(minutos).padStart(2, '0')}:${String(segundos).padStart(2, '0')}</p>`;
     }, 1000);
 }
 
 function pararCronometro() {
     clearInterval(cronometroIntervalo);
-    return tempoDecorrido;
+    return minutos, segundos;
 }
 
 function finalizarQuiz() {
@@ -101,18 +107,19 @@ function finalizarQuiz() {
     const tempo = pararCronometro();
 
     perguntas.innerHTML = `
-        <p class="msgFinal">
-            <p style="margin-top:-10%; color: #FFFFFF;">
+        <div class="msgFinal">
+            <p>
                 Você acertou ${pontos} de ${qtdPerguntas} perguntas!
             </p>
-            <span style="color: #FFFFFF;">
+            <span>
                 Tente de novo ou acesse a dashboard e veja como foi seu desempenho comparado ao dos outros usuários
             </span>
-        </p>
+            <button onclick="window.location.reload()" class="botoes end">
+                Tentar novamente
+            </button>
+        </div>
 
-        <button onclick="window.location.reload()" class="botoes" style="margin-top: 50%;">
-            Tentar novamente
-        </button>
+        
     `
     enviarPontuacao(pontos, sessionStorage.ID_USUARIO, fkQuiz, tempo);
 }

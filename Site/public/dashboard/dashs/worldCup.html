@@ -10,11 +10,10 @@
   <title>Dashboard Copa do Mundo</title>
   <script>
     const liga = sessionStorage.getItem("LIGA_ATUAL");
-    console.log("Liga atual:", liga);
   </script>
 </head>
 
-<body>
+<body onload="validarSessao()">
   <div class="copa">
     <div class="backHome">
       <img src="../../assets/imgs/copaDoMundo.svg" alt="">
@@ -58,5 +57,6 @@
     </div>
   </div>
   <script src="../../assets/js/dashCopa.js"></script>
+  <script src="../../assets/js/sessao.js"></script>
 </body>
 </html>

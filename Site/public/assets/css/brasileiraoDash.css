@@ -34,6 +34,7 @@ body {
         color: #FFFFFF;
         font-size: 20px;
         width: 100%;
+        cursor: pointer;
     }
 }
 
