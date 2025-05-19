@@ -1,4 +1,5 @@
 const fkQuiz = 1;
+const idUsuario = sessionStorage.getItem('ID_USUARIO');
 
 fetch('/grafico/buscarPontuacao')
   .then(response => response.json())
@@ -55,7 +56,6 @@ fetch('/grafico/buscarJogadoresPontuacoes', {
 
 
 
-const idUsuario = sessionStorage.getItem('ID_USUARIO');
 
 fetch(`/grafico/buscarPontuacaoUsuarioPorLiga/${idUsuario}`)
   .then(response => response.json())

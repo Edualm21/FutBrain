@@ -1,128 +1,19 @@
 var database = require("../database/config");
 
-function listarPerguntasPremier() {
-    const instrucao = `
-       SELECT p.idPergunta, p.descricao AS pergunta, a.idAlternativa, a.resposta, a.correta
-        FROM (
-            SELECT idPergunta, descricao
-            FROM perguntas
-            WHERE fkQuiz = 1
-            ORDER BY RAND()
-            LIMIT 10
-        ) AS p
-        JOIN alternativas a ON a.fkPergunta = p.idPergunta
-        ORDER BY p.idPergunta, a.idAlternativa;
-
-    `;
-    console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao);
-}
-
-function listarPerguntasLaLiga() {
-    const instrucao = `
-       SELECT p.idPergunta, p.descricao AS pergunta, a.idAlternativa, a.resposta, a.correta
-        FROM (
-            SELECT idPergunta, descricao
-            FROM perguntas
-            WHERE fkQuiz = 2
-            ORDER BY RAND()
-            LIMIT 10
-        ) AS p
-        JOIN alternativas a ON a.fkPergunta = p.idPergunta
-        ORDER BY p.idPergunta, a.idAlternativa;
-
-    `;
-    console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao);
-}
-
-function listarPerguntasBundesliga() {
-    const instrucao = `
-       SELECT p.idPergunta, p.descricao AS pergunta, a.idAlternativa, a.resposta, a.correta
-        FROM (
-            SELECT idPergunta, descricao
-            FROM perguntas
-            WHERE fkQuiz = 3
-            ORDER BY RAND()
-            LIMIT 10
-        ) AS p
-        JOIN alternativas a ON a.fkPergunta = p.idPergunta
-        ORDER BY p.idPergunta, a.idAlternativa;
-
-    `;
-    console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao);
-}
-
-function listarPerguntasSerieA() {
-    const instrucao = `
-       SELECT p.idPergunta, p.descricao AS pergunta, a.idAlternativa, a.resposta, a.correta
-        FROM (
-            SELECT idPergunta, descricao
-            FROM perguntas
-            WHERE fkQuiz = 4
-            ORDER BY RAND()
-            LIMIT 10
-        ) AS p
-        JOIN alternativas a ON a.fkPergunta = p.idPergunta
-        ORDER BY p.idPergunta, a.idAlternativa;
-
-    `;
-    console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao);
-}
-
-function listarPerguntasBr() {
-    const instrucao = `
-       SELECT p.idPergunta, p.descricao AS pergunta, a.idAlternativa, a.resposta, a.correta
-        FROM (
-            SELECT idPergunta, descricao
-            FROM perguntas
-            WHERE fkQuiz = 5
-            ORDER BY RAND()
-            LIMIT 10
-        ) AS p
-        JOIN alternativas a ON a.fkPergunta = p.idPergunta
-        ORDER BY p.idPergunta, a.idAlternativa;
-
-    `;
-    console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao);
-}
-
-function listarPerguntasChampions() {
+function buscarPerguntasPorQuiz(fkQuiz) {
     const instrucao = `
         SELECT p.idPergunta, p.descricao AS pergunta, a.idAlternativa, a.resposta, a.correta
         FROM (
             SELECT idPergunta, descricao
             FROM perguntas
-            WHERE fkQuiz = 6
+            WHERE fkQuiz = ${fkQuiz}
             ORDER BY RAND()
             LIMIT 10
         ) AS p
         JOIN alternativas a ON a.fkPergunta = p.idPergunta
         ORDER BY p.idPergunta, a.idAlternativa;
-
     `;
-    console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao);
-}
-
-function listarPerguntasCopa() {
-    const instrucao = `
-        SELECT p.idPergunta, p.descricao AS pergunta, a.idAlternativa, a.resposta, a.correta
-        FROM (
-            SELECT idPergunta, descricao
-            FROM perguntas
-            WHERE fkQuiz = 7
-            ORDER BY RAND()
-            LIMIT 10
-        ) AS p
-        JOIN alternativas a ON a.fkPergunta = p.idPergunta
-        ORDER BY p.idPergunta, a.idAlternativa;
-
-    `;
-    console.log("Executando a instrução SQL: \n" + instrucao);
+    console.log("Executando a instrução SQL:\n" + instrucao);
     return database.executar(instrucao);
 }
 
@@ -147,13 +38,7 @@ function cadastrarPontos(idUsuario, fkQuiz, pontos, tempo) {
 
 
 module.exports = {
-    listarPerguntasPremier,
-    listarPerguntasLaLiga,
-    listarPerguntasBundesliga,
-    listarPerguntasSerieA,
-    listarPerguntasBr,
-    listarPerguntasChampions,
-    listarPerguntasCopa,
+    buscarPerguntasPorQuiz,
     listarPontos,
     cadastrarPontos
 };

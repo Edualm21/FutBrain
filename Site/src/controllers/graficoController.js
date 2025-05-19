@@ -29,7 +29,6 @@ function buscarJogadoresPontuacoes(req, res) {
         });
 }
 
-
 function buscarMelhoresPontuadores(req, res) {
     graficoModel.buscarMelhoresPontuadores()
         .then(resultados => {
@@ -55,17 +54,6 @@ function buscarPontuacaoUsuarioPorLiga(req, res) {
         });
 }
 
-function buscarTempoMedio(req, res) {
-  const fkQuiz = req.params.fkQuiz;
-
-  graficoModel.tempoMedioPorQuiz(fkQuiz)
-    .then(resultado => res.status(200).json(resultado[0]))
-    .catch(erro => {
-      console.error("Erro ao buscar tempo médio:", erro);
-      res.status(500).json({ erro: "Erro ao buscar tempo médio." });
-    });
-}
-
 function buscarUltimoTempo(req, res) {
   const idUsuario = req.params.idUsuario;
   const fkQuiz = req.params.fkQuiz;
@@ -83,6 +71,5 @@ module.exports = {
     buscarJogadoresPontuacoes,
     buscarMelhoresPontuadores,
     buscarPontuacaoUsuarioPorLiga,
-    buscarTempoMedio,
     buscarUltimoTempo
 }

@@ -1,59 +1,14 @@
 var quizModel = require("../models/quizModel");
 
-function buscarPerguntasPremier(req, res) {
-    quizModel.listarPerguntasPremier().then(function(resultado){
-        res.status(200).json(resultado);
-    }).catch(function(erro){
-        res.status(500).json(erro.sqlMessage);
-    })
-}
+function buscarPerguntasPorQuiz(req, res) {
+    const fkQuiz = req.params.fkQuiz
 
-function buscarPerguntasLaLiga(req, res) {
-    quizModel.listarPerguntasLaLiga().then(function(resultado){
-        res.status(200).json(resultado);
-    }).catch(function(erro){
-        res.status(500).json(erro.sqlMessage);
-    })
-}
-
-function buscarPerguntasBundesliga(req, res) {
-    quizModel.listarPerguntasBundesliga().then(function(resultado){
-        res.status(200).json(resultado);
-    }).catch(function(erro){
-        res.status(500).json(erro.sqlMessage);
-    })
-}
-
-function buscarPerguntasSerieA(req, res) {
-    quizModel.listarPerguntasSerieA().then(function(resultado){
-        res.status(200).json(resultado);
-    }).catch(function(erro){
-        res.status(500).json(erro.sqlMessage);
-    })
-}
-
-function buscarPerguntasBr(req, res) {
-    quizModel.listarPerguntasBr().then(function(resultado){
-        res.status(200).json(resultado);
-    }).catch(function(erro){
-        res.status(500).json(erro.sqlMessage);
-    })
-}
-
-function buscarPerguntasChampions(req, res) {
-    quizModel.listarPerguntasChampions().then(function(resultado){
-        res.status(200).json(resultado);
-    }).catch(function(erro){
-        res.status(500).json(erro.sqlMessage);
-    })
-}
-
-function buscarPerguntasCopa(req, res) {
-    quizModel.listarPerguntasCopa().then(function(resultado){
-        res.status(200).json(resultado);
-    }).catch(function(erro){
-        res.status(500).json(erro.sqlMessage);
-    })
+    quizModel.buscarPerguntasPorQuiz(fkQuiz)
+        .then(resultado => res.json(resultado))
+        .catch(erro => {
+            console.error("Erro ao buscar perguntas:", erro)
+            res.status(500).json({ erro: "Erro ao buscar perguntas" })
+        });
 }
 
 function listarPontos(req, res) {
@@ -82,25 +37,8 @@ function cadastrarPontos(req, res) {
     });
 }
 
-function tempoMedio(req, res) {
-  const fkQuiz = req.params.fkQuiz;
-
-  quizModel.tempoMedioPorQuiz(fkQuiz)
-    .then(resultado => res.status(200).json(resultado[0]))
-    .catch(erro => {
-      console.error("Erro ao buscar tempo médio:", erro);
-      res.status(500).json({ erro: "Erro ao buscar tempo médio." });
-    });
-}
-
 module.exports = {
-    buscarPerguntasPremier,
-    buscarPerguntasLaLiga,
-    buscarPerguntasBundesliga,
-    buscarPerguntasSerieA,
-    buscarPerguntasBr,
-    buscarPerguntasChampions,
-    buscarPerguntasCopa,
+    buscarPerguntasPorQuiz,
     listarPontos,
     cadastrarPontos
 };

@@ -63,15 +63,6 @@ function buscarPontuacao() {
     return database.executar(instrucaoSql);
 }
 
-function tempoMedioPorQuiz(fkQuiz) {
-  const instrucao = `
-    SELECT AVG(tempo_segundos) AS tempoMedio
-    FROM resultado
-    WHERE fkQuiz = ${fkQuiz};
-  `;
-  return database.executar(instrucao);
-}
-
 function ultimoTempoUsuario(idUsuario, fkQuiz) {
   const instrucao = `
     SELECT tempo_segundos
@@ -88,6 +79,5 @@ module.exports = {
     buscarMelhoresPontuadores,
     buscarPontuacaoUsuarioPorLiga,
     buscarPontuacao,
-    tempoMedioPorQuiz,
     ultimoTempoUsuario
 }

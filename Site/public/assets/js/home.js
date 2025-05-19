@@ -1,34 +1,43 @@
 function premier(){
-    window.location = '../dashboard/quiz/premier.html'    
+    sessionStorage.setItem("fkQuiz", 1);
+    window.location = '../dashboard/quiz/premier.html';
 }
 
 function laliga(){
-    window.location = '../dashboard/quiz/laliga.html'    
-}
-
-function serieA(){
-    window.location = '../dashboard/quiz/serieA_tim.html'    
+    sessionStorage.setItem("fkQuiz", 2);
+    window.location = '../dashboard/quiz/laliga.html';
 }
 
 function bundesliga(){
-    window.location = '../dashboard/quiz/bundesliga.html'    
+    sessionStorage.setItem("fkQuiz", 3);
+    window.location = '../dashboard/quiz/bundesliga.html';
+}
+
+function serieA(){
+    sessionStorage.setItem("fkQuiz", 4);
+    window.location = '../dashboard/quiz/serieA_tim.html';
 }
 
 function brasileirao(){
-    window.location = '../dashboard/quiz/brasileirao.html'    
+    sessionStorage.setItem("fkQuiz", 5);
+    window.location = '../dashboard/quiz/brasileirao.html';
 }
 
 function champions(){
-    window.location = '../dashboard/quiz/champions.html'    
+    sessionStorage.setItem("fkQuiz", 6);
+    window.location = '../dashboard/quiz/champions.html';
 }
 
 function worldCup(){
-    window.location = '../dashboard/quiz/worldCup.html'    
+    sessionStorage.setItem("fkQuiz", 7);
+    window.location = '../dashboard/quiz/worldCup.html';
 }
 
 function futebol(){
-    window.location = '../dashboard/quiz/futebol.html'    
+    sessionStorage.setItem("fkQuiz", 8);
+    window.location = '../dashboard/quiz/futebol.html';
 }
+
 
 function premierDash() {
     sessionStorage.setItem("LIGA_ATUAL", "Premier League");

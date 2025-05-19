@@ -9,9 +9,14 @@ proximaPergunta.addEventListener("click", next)
 
 var perguntaAtual = 0
 var pontos = 0
-const fkQuiz = 1
+const fkQuiz = sessionStorage.getItem("fkQuiz")
 
-function start(){
+if (!fkQuiz) {
+    alert("Quiz não identificado.")
+    window.location.href = "../../home.html"
+}
+
+function start() {
     comecarQuiz.style.display = "none"
     perguntas.classList.remove("hide")
     iniciarCronometro()
@@ -19,7 +24,6 @@ function start(){
 }
 
 function sortearAlternativas(alternativas) {
-
     for (var i = alternativas.length - 1; i > 0; i--) {
         const sortear = Math.floor(Math.random() * (i + 1));
         [alternativas[i], alternativas[sortear]] = [alternativas[sortear], alternativas[i]];
@@ -27,9 +31,8 @@ function sortearAlternativas(alternativas) {
     return alternativas;
 }
 
-function next(){
-
-    if(listaDePerguntas.length == perguntaAtual){
+function next() {
+    if (listaDePerguntas.length == perguntaAtual) {
         return finalizarQuiz()
     }
 
@@ -37,17 +40,16 @@ function next(){
 
     respostas.innerHTML = ""
     questao.textContent = listaDePerguntas[perguntaAtual].pergunta
-    
-    listaDePerguntas[perguntaAtual].respostas.forEach(answer => {
 
+    listaDePerguntas[perguntaAtual].respostas.forEach(answer => {
         const novaResposta = document.createElement("button")
         novaResposta.classList.add("botoes", "answer")
         novaResposta.textContent = answer.text
 
-        // Armazenar a informação de 'correct' no dataset do botão
-        if(answer.correct){
+        if (answer.correct) {
             novaResposta.dataset.correct = true
         }
+
         respostas.appendChild(novaResposta)
 
         novaResposta.addEventListener("click", selecionarRespostas)
@@ -55,15 +57,15 @@ function next(){
     })
 }
 
-function selecionarRespostas(event){
+function selecionarRespostas(event) {
     const respostaClicada = event.target
-    
-    if(respostaClicada.dataset.correct){
+
+    if (respostaClicada.dataset.correct) {
         pontos++
     }
 
     document.querySelectorAll(".answer").forEach(button => {
-        if(button.dataset.correct){
+        if (button.dataset.correct) {
             button.classList.add("correct")
         } else {
             button.classList.add("incorrect")
@@ -81,31 +83,36 @@ let cronometroIntervalo;
 let tempoDecorrido = 0;
 
 function iniciarCronometro() {
-  tempoDecorrido = 0;
-  cronometroIntervalo = setInterval(() => {
-    tempoDecorrido++;
-    document.getElementById('cronometro').innerText = `Tempo: ${tempoDecorrido}s`;
-  }, 1000);
+    tempoDecorrido = 0;
+    cronometroIntervalo = setInterval(() => {
+        tempoDecorrido++;
+        document.getElementById('cronometro').innerText = `Tempo: ${tempoDecorrido}s`;
+    }, 1000);
 }
 
 function pararCronometro() {
-  clearInterval(cronometroIntervalo);
-  return tempoDecorrido;
+    clearInterval(cronometroIntervalo);
+    return tempoDecorrido;
 }
 
-function finalizarQuiz(){
+function finalizarQuiz() {
     const qtdPerguntas = listaDePerguntas.length
     proximaPergunta.classList.add("hide")
     const tempo = pararCronometro();
 
     perguntas.innerHTML = `
-        <p class = "msgFinal"> <p style="margin-top:-10% color: #FFFFFF;">Você acertou ${pontos} de ${qtdPerguntas} perguntas!</p>
-            <span style = "color: #FFFFFF;">Tente de novo ou acesse a dashboard e veja como foi seu desempenho comparado ao dos outros usuários</span>
+        <p class="msgFinal">
+            <p style="margin-top:-10%; color: #FFFFFF;">
+                Você acertou ${pontos} de ${qtdPerguntas} perguntas!
+            </p>
+            <span style="color: #FFFFFF;">
+                Tente de novo ou acesse a dashboard e veja como foi seu desempenho comparado ao dos outros usuários
+            </span>
         </p>
 
-        <button onclick = "window.location.reload()" class = "botoes" style="margin-top: 50%;">
+        <button onclick="window.location.reload()" class="botoes" style="margin-top: 50%;">
             Tentar novamente
-        </button>  
+        </button>
     `
     enviarPontuacao(pontos, sessionStorage.ID_USUARIO, fkQuiz, tempo);
 }
@@ -123,51 +130,42 @@ function enviarPontuacao(pontos, idUsuario, fkQuiz, tempo) {
             tempo: tempo
         })
     })
-    .then(res => {
-        if (!res.ok) {
-            throw new Error("Erro ao enviar pontuação.");
-        }
-        return res.json();
-    })
-    .then(data => {
-        console.log("Pontuação cadastrada com sucesso:", data);
-    })
-    .catch(err => {
-        console.error("Erro ao enviar pontuação:", err);
-    });
+        .then(res => {
+            if (!res.ok) throw new Error("Erro ao enviar pontuação.")
+            return res.json()
+        })
+        .then(data => {
+            console.log("Pontuação cadastrada com sucesso:", data);
+        })
+        .catch(err => {
+            console.error("Erro ao enviar pontuação:", err);
+        });
 }
 
 var listaDePerguntas = [];
 
-window.onload = () => { 
-    fetch("/quiz/perguntas/premier")
-    .then(res => res.json()) 
-    .then(data => { 
+window.onload = () => {
+    fetch(`/quiz/perguntas/${fkQuiz}`)
+        .then(res => res.json())
+        .then(data => {
+            const perguntasAgrupadas = {}
 
-        
-        const perguntasAgrupadas = {};
+            data.forEach(item => {
+                if (!perguntasAgrupadas[item.idPergunta]) {
+                    perguntasAgrupadas[item.idPergunta] = {
+                        pergunta: item.pergunta,
+                        respostas: []
+                    }
+                }
 
-        
-        data.forEach(item => {
-            
-            if (!perguntasAgrupadas[item.idPergunta]) {
-                // Se não existir, cria uma nova entrada com a descrição da pergunta e um array vazio para as respostas
-                perguntasAgrupadas[item.idPergunta] = {
-                    pergunta: item.pergunta,
-                    respostas: []
-                };
-            }
-            // Adiciona a alternativa atual ao array de respostas da pergunta correspondente
-            perguntasAgrupadas[item.idPergunta].respostas.push({
-                text: item.resposta,
-                correct: item.correta == 1 
-            });
-        });
+                perguntasAgrupadas[item.idPergunta].respostas.push({
+                    text: item.resposta,
+                    correct: item.correta == 1
+                })
+            })
 
-        // Converte o objeto perguntasAgrupadas em um array de objetos
-        listaDePerguntas = Object.values(perguntasAgrupadas);
-
-        next();
-    })
-    .catch(err => console.error("Erro ao carregar perguntas:", err));
+            listaDePerguntas = Object.values(perguntasAgrupadas)
+            next()
+        })
+        .catch(err => console.error("Erro ao carregar perguntas:", err))
 }
