@@ -1,9 +1,13 @@
-# futBrain ⚽🧠  
+# FutBrain ⚽🧠  
 Uma plataforma interativa de quizzes sobre futebol com dashboards de desempenho.
+
+> Imagem da Página para escolher os quizzes - Eduardo Almeida
+
+<img src=".github/escolherQuiz.png" alt="Imagem home">
 
 ## 📖 Sobre o Projeto
 
-**futBrain** é um website desenvolvido como projeto individual para a Faculdade **SPTech**. O objetivo é unir aprendizado e diversão, oferecendo quizzes sobre diversas ligas de futebol e visualizações interativas dos resultados por meio de dashboards.
+**FutBrain** é um website desenvolvido como projeto individual para a Faculdade **SPTech**. O objetivo é unir aprendizado e diversão, oferecendo quizzes sobre diversas ligas de futebol e visualizações interativas dos resultados por meio de dashboards.
 
 Além disso, a plataforma conta com uma introdução à **história do futebol**, incentivando o conhecimento antes do desafio.
 
@@ -21,8 +25,35 @@ Além disso, a plataforma conta com uma introdução à **história do futebol**
 
 ## 🛠️ Tecnologias Utilizadas
 
-- **Frontend**: HTML, CSS, JavaScript  
-- **Backend**: Node.js  
-- **Banco de Dados**: MySQL  
-- **APIs**:  
-  - web-data-viz API para visualização de dados, desenvolvida pela **SPTech**
+<div align="center">
+  <img src="https://skillicons.dev/icons?i=html,css,js,nodejs,mysql,github,git">
+  <br />
+</div> 
+
+## 📖 Instalação e Uso
+
+1. Clone o repositório:
+    ```bash
+    git clone https://github.com/Edualm21/FutBrain
+    ```
+
+2. Entre no diretorio Site
+   ```bash
+    cd Site
+    ```
+3. Instale as Dependências
+   ```bash
+    npm i ou npm install
+    ```
+4. inicialize o Serivodor Local - app.js
+   ```bash
+    npm start
+    ```
+
+## 🤝 Contribuidor
+
+ - Harison Rios [https://github.com/Edualm21]
+
+## 📝 Licença
+
+Esse projeto está sob licença. Veja o arquivo [LICENÇA](LICENSE.md) para mais detalhes.
