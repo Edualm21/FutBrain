@@ -52,7 +52,7 @@ Além disso, a plataforma conta com uma introdução à **história do futebol**
 
 ## 🤝 Contribuidor
 
- - Harison Rios [https://github.com/Edualm21]
+ - Eduardo Almeida [https://github.com/Edualm21]
 
 ## 📝 Licença
 
