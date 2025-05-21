@@ -1,5 +1,4 @@
 CREATE DATABASE futBrain;
-
 USE futBrain;
 
 CREATE TABLE usuario(
@@ -93,7 +92,7 @@ INSERT INTO perguntas (fkQuiz, descricao) VALUES
 (1, 'Qual zagueiro holandês é um dos pilares do Liverpool desde 2018?'),
 (1, 'Quantos títulos da Premier League tem o Chelsea até 2025?'),
 (1, 'Qual clube tem como mascote um galo?'),
-(1, 'Qual clássico é conhecido como ""Guerra das Flores?'),
+(1, 'Qual time Cristiano Ronaldo jogou?'),
 (1, 'Quem é conhecido como “Mr. Premier League”?'),
 (1, 'Qual clube tinha Alan Shearer como ídolo?'),
 (1, 'Qual jogador marcou um hat-trick mais rápido na história da Premier League?'),
@@ -1055,9 +1054,9 @@ INSERT INTO alternativas (fkPergunta, resposta, correta) VALUES
     (195, 'D\'Alessandro', 0),
     (195, 'Guerrero', 0),
     (196, 'Corinthians (1998)', 1),
-    (196, 'São Paulo (2006)', 0),
-    (196, 'Cruzeiro (2013)', 0),
-    (196, 'Flamengo (2019)', 0),
+    (196, 'São Paulo (2001)', 0),
+    (196, 'Cruzeiro (1992)', 0),
+    (196, 'Flamengo (1995)', 0),
     (197, '2007 - Paraná', 1),
     (197, '2011 - América Mineiro', 0),
     (197, '2015 - Joinville', 0),
@@ -1519,6 +1518,214 @@ INSERT INTO alternativas (fkPergunta, resposta, correta) VALUES
     (288, 'Coreia do Sul/Japão', 0),
     (288, 'Brasil', 0);
 
+INSERT INTO perguntas (fkQuiz, descricao) VALUES
+    (8, 'Qual o maior artilheiro da história?'), -- idPergunta = 289
+    (8, 'Qual o jogador com mais assistências na história?'), -- idPergunta = 290
+    (8, 'Qual o jogador com mais jogos na história?'), -- idPergunta = 291
+    (8, 'Em que ano foi inventado o futebol?'), -- idPergunta = 292
+    (8, 'Qual time tem mais títulos na história?'), -- idPergunta = 293
+    (8, 'Qual o jogador com mais títulos na história?'), -- idPergunta = 294
+    (8, 'Qual jogador brasileiro com mais gols na história (Sem contar o Pelé)?'), -- idPergunta = 295
+    (8, 'Qual o jogador europeu com mais gols na história?'), -- idPergunta = 296
+    (8, 'Onde surgiu o futebol?'), -- idPergunta = 297
+    (8, 'Em que ano teve o primeiro campeonato oficial de futebol?'), -- idPergunta = 298
+    (8, 'Qual foi o primeiro time profissional do Brasil?'), -- idPergunta = 299
+    (8, 'Em que ano o futebol veio para o Brasil?'), -- idPergunta = 300
+    (8, 'Qual país é conhecido como país do futebol?'), -- idPergunta = 301
+    (8, 'Quantas modalidades tem o futebol?'), -- idPergunta = 302
+    (8, 'Qual o maior artilheiro da história do futebol de salão?'), -- idPergunta = 303
+    (8, 'Qual a maior artilheira do futebol feminino?'), -- idPergunta = 304
+    (8, 'Qual o jogador mais velho a jogar uma partida de futebol?'), -- idPergunta = 305
+    (8, 'Qual a competição mais importante do futebol:'), -- idPergunta = 306
+    (8, 'Qual único jogador a ganhar três copas do mundo?'), -- idPergunta = 307
+    (8, 'Em que ano teve o primeiro torneio oficial de futebol feminino?'), -- idPergunta = 308
+    (8, 'Quais são consideradas as 5 grandes ligas do futebol?'), -- idPergunta = 309
+    (8, 'Qual o maior público que uma partida de futebol já teve?'), -- idPergunta = 310
+    (8, 'Qual o jogador mais novo a jogar uma partida oficial?'), -- idPergunta = 311
+    (8, 'Qual jogador é conhecido como "O Fenômeno"?'), -- idPergunta = 312
+    (8, 'Qual jogador é conhecido como "O rei do futebol"?'), -- idPergunta = 313
+    (8, 'O futebol é jogado com quantos jogadores em cada time?'), -- idPergunta = 314
+    (8, 'Qual foi o primeiro clube de futebol no mundo?'), -- idPergunta = 315
+    (8, 'Em que ano foi criada a FIFA?'), -- idPergunta = 316
+    (8, 'Em que ano o cartão vermelho foi introduzido no futebol?'), -- idPergunta = 317
+    (8, 'Antes da padronização, qual objeto era frequentemente usado como bola em jogos antigos?'), -- idPergunta = 318
+    (8, 'Em que década o futebol começou a se espalhar para a América do Sul?'), -- idPergunta = 319
+    (8, 'Qual o nome da primeira liga de futebol profissional do mundo?'), -- idPergunta = 320
+    (8, 'Quantas federações continentais estão afiliadas à FIFA?'), -- idPergunta = 321
+    (8, 'Qual é o órgão responsável pelas regras do futebol?'), -- idPergunta = 322
+    (8, 'Em que ano foi introduzido o impedimento como regra oficial do futebol?'), -- idPergunta = 323
+    (8, 'Quando passou a ser permitido fazer substituições durante uma partida?'), -- idPergunta = 324
+    (8, 'Qual foi a primeira transmissão de uma partida de futebol ao vivo pela televisão brasileira?'), -- idPergunta = 325
+    (8, 'Em que década foi introduzido o sistema de pontuação de 3 pontos por vitória?'), -- idPergunta = 326
+    (8, 'Em que ano mulheres passaram a ser oficialmente autorizadas a jogar futebol pela FIFA?'), -- idPergunta = 327
+    (8, 'Qual cidade brasileira recebeu a primeira partida de futebol documentada no país?'), -- idPergunta = 328
+    (8, 'Em que ano foi realizada a primeira partida de futebol registrada na América do Sul?'); -- idPergunta = 329
+
+INSERT INTO alternativas (fkPergunta, resposta, correta) VALUES
+    (289, 'Pelé', 1),
+    (289, 'Cristiano Ronaldo', 0),
+    (289, 'Lionel Messi', 0),
+    (289, 'Gerd Müller', 0),
+    (290, 'Messi', 1),
+    (290, 'Pelé', 0),
+    (290, 'Cristiano Ronaldo', 0),
+    (290, 'Diego Maradona', 0),
+    (291, 'Peter Shilton', 1),
+    (291, 'Roberto Carlos', 0),
+    (291, 'Xavi Hernández', 0),
+    (291, 'Gianluigi Buffon', 0),
+    (292, '1863', 1),
+    (292, '1848', 0),
+    (292, '1871', 0),
+    (292, '1904', 0),
+    (293, 'Rangers', 1),
+    (293, 'Real Madrid', 0),
+    (293, 'Al-Ahly', 0),
+    (293, 'Barcelona', 0),
+    (294, 'Messi', 1),
+    (294, 'Pelé', 0),
+    (294, 'Cristiano Ronaldo', 0),
+    (294, 'Daniel Alves', 0),
+    (295, 'Romário', 1),
+    (295, 'Zico', 0),
+    (295, 'Roberto Dinamite', 0),
+    (295, 'Rivellino', 0),
+    (296, 'Cristiano Ronaldo', 1),
+    (296, 'Ferenc Puskás', 0),
+    (296, 'Gerd Müller', 0),
+    (296, 'Robert Lewandowski', 0),
+    (297, 'Inglaterra', 1),
+    (297, 'Brasil', 0),
+    (297, 'China', 0),
+    (297, 'Itália', 0),
+    (298, '1871-1872', 1),
+    (298, '1863', 0),
+    (298, '1888-1889', 0),
+    (298, '1900', 0),
+    (299, 'Barra Mansa', 1),
+    (299, 'Corinthians', 0),
+    (299, 'Fluminense', 0),
+    (299, 'São Paulo Athletic Club', 0),
+    (300, '1894', 1),
+    (300, '1888', 0),
+    (300, '1900', 0),
+    (300, '1904', 0),
+    (301, 'Brasil', 1),
+    (301, 'Alemanha', 0),
+    (301, 'Itália', 0),
+    (301, 'Argentina', 0),
+    (302, '5', 1),
+    (302, '3', 0),
+    (302, '7', 0),
+    (302, '4', 0),
+    (303, 'Falcão', 1),
+    (303, 'Manoel Tobias', 0),
+    (303, 'Alessandro Rosa Vieira', 0),
+    (303, 'Lenísio', 0),
+    (304, 'Christine Sinclair', 1),
+    (304, 'Marta', 0),
+    (304, 'Mia Hamm', 0),
+    (304, 'Abby Wambach', 0),
+    (305, 'Robert Carmona', 1),
+    (305, 'Kazuyoshi Miura', 0),
+    (305, 'Stanley Matthews', 0),
+    (305, 'Roger Milla', 0),
+    (306, 'Copa do mundo', 1),
+    (306, 'Liga dos Campeões', 0),
+    (306, 'Copa América', 0),
+    (306, 'Olimpíadas', 0),
+    (307, 'Pelé', 1),
+    (307, 'Cafu', 0),
+    (307, 'Daniel Alves', 0),
+    (307, 'Garrincha', 0),
+    (308, '1991', 1),
+    (308, '1971', 0),
+    (308, '1989', 0),
+    (308, '1999', 0),
+    (309, 'Brasileirão, Premier, Bundesliga, SerieA, LaLiga', 1),
+    (309, 'Ligue 1, Premier, SerieA, LaLiga, Eredivisie', 0),
+    (309, 'Brasileirão, Liga MX, MLS, Primeira Liga, Scottish Premiership', 0),
+    (309, 'Premier, Bundesliga, SerieA, LaLiga, Ligue 1', 0),
+    (310, '199.854', 1),
+    (310, '173.850', 0),
+    (310, '200.000', 0),
+    (310, '185.000', 0),
+    (311, 'Mateo Apolonio', 1),
+    (311, 'Endrick', 0),
+    (311, 'Freddy Adu', 0),
+    (311, 'Martín Odegaard', 0),
+    (312, 'Ronaldo Nazário', 1),
+    (312, 'Ronaldinho Gaúcho', 0),
+    (312, 'Romário', 0),
+    (312, 'Rivaldo', 0),
+    (313, 'Pelé', 1),
+    (313, 'Diego Maradona', 0),
+    (313, 'Johan Cruyff', 0),
+    (313, 'Franz Beckenbauer', 0),
+    (314, '11', 1),
+    (314, '9', 0),
+    (314, '10', 0),
+    (314, '12', 0),
+    (315, 'Sheffield Football Club', 1),
+    (315, 'Notts County', 0),
+    (315, 'Cambridge University AFC', 0),
+    (315, 'Rangers', 0),
+    (316, '1904', 1),
+    (316, '1890', 0),
+    (316, '1920', 0),
+    (316, '1930', 0),
+    (317, '1970', 1),
+    (317, '1950', 0),
+    (317, '1966', 0),
+    (317, '1982', 0),
+    (318, 'Couro', 1),
+    (318, 'Pedra', 0),
+    (318, 'Madeira', 0),
+    (318, 'Tecido', 0),
+    (319, '1860', 1),
+    (319, '1870', 0),
+    (319, '1880', 0),
+    (319, '1890', 0),
+    (320, 'Football League', 1),
+    (320, 'Premier League', 0),
+    (320, 'The FA Cup', 0),
+    (320, 'English Football League', 0),
+    (321, '6', 1),
+    (321, '5', 0),
+    (321, '7', 0),
+    (321, '8', 0),
+    (322, 'FIFA', 1),
+    (322, 'IFAB', 0),
+    (322, 'UEFA', 0),
+    (322, 'Conmebol', 0),
+    (323, '1863', 1),
+    (323, '1870', 0),
+    (323, '1891', 0),
+    (323, '1925', 0),
+    (324, '1958', 1),
+    (324, '1966', 0),
+    (324, '1970', 0),
+    (324, '1980', 0),
+    (325, 'Itália 2 x 2 Alemanha', 1),
+    (325, 'Brasil 1 x 0 Inglaterra', 0),
+    (325, 'Flamengo 3 x 0 Botafogo', 0),
+    (325, 'Corinthians 2 x 1 Palmeiras', 0),
+    (326, '1980', 1),
+    (326, '1970', 0),
+    (326, '1990', 0),
+    (326, '2000', 0),
+    (327, '1979', 1),
+    (327, '1965', 0),
+    (327, '1985', 0),
+    (327, '1991', 0),
+    (328, 'São Paulo', 1),
+    (328, 'Rio de Janeiro', 0),
+    (328, 'Santos', 0),
+    (328, 'Belo Horizonte', 0),
+    (329, '1867', 1),
+    (329, '1870', 0),
+    (329, '1885', 0),
+    (329, '1890', 0);
     
 
 
