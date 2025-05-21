@@ -32,27 +32,20 @@ function buscarPontuacaoUsuarioPorLiga(idUsuario) {
     return database.executar(instrucaoSql);
 }
 
-function buscarMelhoresPontuadores() {
-    const instrucaoSql = `
-        SELECT 
-        usuario.nome AS 'Nome Jogador', 
-        MAX(resultado.pontos) AS pontos
-    FROM 
-        resultado
-    JOIN 
-        usuario ON resultado.fkUsuario = usuario.idUsuario
-    GROUP BY 
-        usuario.idUsuario, usuario.nome
-    ORDER BY 
-        pontos DESC
+function buscarMelhoresPontuadores(fkQuiz) {
+   const instrucaoSql = `
+    SELECT 
+        u.nome AS 'Nome Jogador', 
+        MAX(r.pontos) AS pontos
+    FROM resultado as r
+    JOIN usuario as u ON r.fkUsuario = u.idUsuario
+    WHERE r.fkQuiz = ${fkQuiz}
+    GROUP BY u.idUsuario, u.nome
+    ORDER BY pontos DESC
     LIMIT 3;
-    `;
-
+`;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql).catch(error => {
-        console.error("Erro ao executar a consulta SQL:", error);
-        throw error; // Rethrow para ser tratado posteriormente
-    });
+    return database.executar(instrucaoSql);
 }
 
 function buscarPontuacao() {
@@ -63,13 +56,26 @@ function buscarPontuacao() {
     return database.executar(instrucaoSql);
 }
 
-function ultimoTempoUsuario(idUsuario, fkQuiz) {
+function topTresTempos(fkQuiz) {
   const instrucao = `
-    SELECT tempo_segundos
+    SELECT 
+        u.nome,
+        r.tempo_segundos
+    FROM resultado as r
+    JOIN usuario as u ON r.fkUsuario = u.idUsuario
+    WHERE r.fkQuiz = ${fkQuiz}
+      AND r.tempo_segundos IS NOT NULL
+    ORDER BY r.tempo_segundos ASC
+    LIMIT 3;
+  `;
+  return database.executar(instrucao);
+}
+
+function mediaPontuacaoUsuario(idUsuario, fkQuiz) {
+  const instrucao = `
+    SELECT AVG(pontos) AS media_pontuacao
     FROM resultado
-    WHERE fkUsuario = ${idUsuario} AND fkQuiz = ${fkQuiz}
-    ORDER BY idResultado DESC
-    LIMIT 1;
+    WHERE fkUsuario = ${idUsuario} AND fkQuiz = ${fkQuiz};
   `;
   return database.executar(instrucao);
 }
@@ -79,5 +85,6 @@ module.exports = {
     buscarMelhoresPontuadores,
     buscarPontuacaoUsuarioPorLiga,
     buscarPontuacao,
-    ultimoTempoUsuario
+    topTresTempos,
+    mediaPontuacaoUsuario
 }

@@ -30,7 +30,9 @@ function buscarJogadoresPontuacoes(req, res) {
 }
 
 function buscarMelhoresPontuadores(req, res) {
-    graficoModel.buscarMelhoresPontuadores()
+    const fkQuiz = req.params.fkQuiz;
+
+    graficoModel.buscarMelhoresPontuadores(fkQuiz)
         .then(resultados => {
             if (resultados.length > 0) {
                 res.status(200).json(resultados);
@@ -54,15 +56,25 @@ function buscarPontuacaoUsuarioPorLiga(req, res) {
         });
 }
 
-function buscarUltimoTempo(req, res) {
-  const idUsuario = req.params.idUsuario;
+function buscarTopTresPontuadores(req, res) {
   const fkQuiz = req.params.fkQuiz;
 
-  graficoModel.ultimoTempoUsuario(idUsuario, fkQuiz)
+  graficoModel.topTresTempos(fkQuiz)
+    .then(resultado => res.status(200).json(resultado))
+    .catch(erro => {
+      console.error("Erro ao buscar top 3 tempos:", erro);
+      res.status(500).json({ erro: "Erro ao buscar top 3 tempos." });
+    });
+}
+
+function buscarMediaPontuacao(req, res) {
+  const { idUsuario, fkQuiz } = req.params;
+
+  graficoModel.mediaPontuacaoUsuario(idUsuario, fkQuiz)
     .then(resultado => res.status(200).json(resultado[0]))
     .catch(erro => {
-      console.error("Erro ao buscar último tempo:", erro);
-      res.status(500).json({ erro: "Erro ao buscar último tempo." });
+      console.error("Erro ao buscar média de pontuação:", erro);
+      res.status(500).json({ erro: "Erro ao buscar média de pontuação." });
     });
 }
 
@@ -71,5 +83,6 @@ module.exports = {
     buscarJogadoresPontuacoes,
     buscarMelhoresPontuadores,
     buscarPontuacaoUsuarioPorLiga,
-    buscarUltimoTempo
+    buscarTopTresPontuadores,
+    buscarMediaPontuacao
 }

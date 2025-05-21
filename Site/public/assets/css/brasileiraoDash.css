@@ -84,7 +84,7 @@ body {
     flex-direction: column;
 }
 
-.kpis {
+.kpis{
     display: flex;
     flex-direction: row;
     gap: 50px;
@@ -93,22 +93,43 @@ body {
     height: 40%;
 }
 
-.kpi1,
-.kpi2,
-.kpi3,
-.kpi4 {
+.kpi1, .kpi2,
+.kpi3, .kpi4{
     width: 20%;
     height: 98%;
     background-color: #FFFFFF;
     border-radius: 20px;
     justify-content: center;
     text-align: center;
-    font-size: 15px;
+    font-size: 16px;
     display: flex;
     flex-direction: column;
 
-    p {
+    p{
         margin-top: 4%;
+    }
+}
+
+.kpi1{
+    text-align: center;
+
+    p{
+        font-weight: bold;
+    }
+}
+
+.kpi2{
+    p{
+        font-weight: bold;
+    }
+}
+
+.kpi3{
+    display: flex;
+
+    ul{
+        margin-top: 5%;
+        gap: 15px;
     }
 }
 

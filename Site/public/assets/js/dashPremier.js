@@ -9,10 +9,10 @@ fetch('/grafico/buscarPontuacao')
   })
   .catch(error => console.error('Erro ao buscar média de pontuação:', error));
 
-// Buscar top 3 pontuadores
-fetch('/grafico/buscarMelhoresPontuadores')
+fetch(`/grafico/buscarMelhoresPontuadores/${fkQuiz}`)
   .then(response => response.json())
   .then(data => {
+    console.log("Resposta recebida:", data);
 
     const top3List = document.getElementById('topTresPontuadores');
     top3List.innerHTML = '';
@@ -26,9 +26,6 @@ fetch('/grafico/buscarMelhoresPontuadores')
   })
   .catch(error => console.error('Erro ao buscar top 3 pontuadores:', error));
 
-
-
-// Plotar gráfico de pontuação dos jogadores
 fetch('/grafico/buscarJogadoresPontuacoes', {
   method: 'POST',
   headers: {
@@ -80,25 +77,27 @@ fetch(`/grafico/buscarPontuacaoUsuarioPorLiga/${idUsuario}`)
   })
   .catch(error => console.error('Erro ao buscar pontuação por liga:', error));
 
-  fetch(`/grafico/buscarTempoMedio/${fkQuiz}`)
-  .then(res => res.json())
-  .then(data => {
-    const tempo = data.tempoMedio || 0;
-    const ul = document.getElementById('listaMelhoresTempos');
-    const li = document.createElement('li');
-    li.textContent = `Tempo médio: ${tempo.toFixed(2)}s`;
-    ul.appendChild(li);
-  })
-  .catch(err => console.error('Erro ao buscar tempo médio:', err));
 
-// Buscar último tempo do usuário
-fetch(`/grafico/buscarUltimoTempo/${idUsuario}/${fkQuiz}`)
+fetch(`/grafico/buscarTopTresTempos/${fkQuiz}`)
   .then(res => res.json())
   .then(data => {
-    const tempo = data.tempo_segundos || 0;
+    console.log('Dados recebidos:', data);
     const ul = document.getElementById('listaMelhoresTempos');
-    const li = document.createElement('li');
-    li.textContent = `Seu último tempo: ${tempo}s`;
-    ul.appendChild(li);
+    ul.innerHTML = '';
+    data.forEach((item, index) => {
+      const li = document.createElement('li');
+      const medalha = ['🥇', '🥈', '🥉'][index] || '';
+      li.innerHTML = `${medalha}: ${item.nome} - ${item.tempo_segundos}s`;
+      ul.appendChild(li);
+    });
   })
-  .catch(err => console.error('Erro ao buscar último tempo:', err));
+  .catch(err => console.error('Erro ao buscar top 3 tempos:', err));
+
+
+fetch(`/grafico/mediaPontuacao/${idUsuario}/${fkQuiz}`)
+  .then(res => res.json())
+  .then(data => {
+    const media = data.media_pontuacao ? parseFloat(data.media_pontuacao).toFixed(2) : '0.00';
+    document.getElementById('pontuacaoMediaJogador').innerHTML = `${media}`;
+  })
+  .catch(err => console.error('Erro ao buscar média de pontuação:', err));

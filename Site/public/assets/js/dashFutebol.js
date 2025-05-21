@@ -1,3 +1,6 @@
+const fkQuiz = 8;
+const idUsuario = sessionStorage.getItem('ID_USUARIO');
+
 fetch('/grafico/buscarPontuacao')
   .then(response => response.json())
   .then(data => {
@@ -7,14 +10,13 @@ fetch('/grafico/buscarPontuacao')
   .catch(error => console.error('Erro ao buscar média de pontuação:', error));
 
 
-// Buscar top 3 pontuadores
-fetch('/grafico/buscarMelhoresPontuadores')
+fetch(`/grafico/buscarMelhoresPontuadores/${fkQuiz}`)
   .then(response => response.json())
   .then(data => {
-    console.log("Dados recebidos:", data); 
+    console.log("Resposta recebida:", data);
+
     const top3List = document.getElementById('topTresPontuadores');
     top3List.innerHTML = '';
-    const jogadores = data.map(item => item.nome_jogador);
 
     data.slice(0, 3).forEach((player, index) => {
       const listItem = document.createElement('li');
@@ -49,10 +51,6 @@ fetch('/grafico/buscarJogadoresPontuacoes', {
   })
   .catch(error => console.error('Erro ao buscar pontuação dos jogadores:', error));
 
-
-
-const idUsuario = sessionStorage.getItem('ID_USUARIO');
-
 fetch(`/grafico/buscarPontuacaoUsuarioPorLiga/${idUsuario}`)
   .then(response => response.json())
   .then(data => {
@@ -74,4 +72,28 @@ fetch(`/grafico/buscarPontuacaoUsuarioPorLiga/${idUsuario}`)
     });
   })
   .catch(error => console.error('Erro ao buscar pontuação por liga:', error));
+
+fetch(`/grafico/buscarTopTresTempos/${fkQuiz}`)
+  .then(res => res.json())
+  .then(data => {
+    console.log('Dados recebidos:', data);
+    const ul = document.getElementById('listaMelhoresTempos');
+    ul.innerHTML = '';
+    data.forEach((item, index) => {
+      const li = document.createElement('li');
+      const medalha = ['🥇', '🥈', '🥉'][index] || '';
+      li.innerHTML = `${medalha}: ${item.nome} - ${item.tempo_segundos}s`;
+      ul.appendChild(li);
+    });
+  })
+  .catch(err => console.error('Erro ao buscar top 3 tempos:', err));
+
+
+fetch(`/grafico/mediaPontuacao/${idUsuario}/${fkQuiz}`)
+  .then(res => res.json())
+  .then(data => {
+    const media = data.media_pontuacao ? parseFloat(data.media_pontuacao).toFixed(2) : '0.00';
+    document.getElementById('pontuacaoMediaJogador').innerHTML = `${media}`;
+  })
+  .catch(err => console.error('Erro ao buscar média de pontuação:', err));
 

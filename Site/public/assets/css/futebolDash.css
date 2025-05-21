@@ -100,7 +100,7 @@ body{
     border-radius: 20px;
     justify-content: center;
     text-align: center;
-    font-size: 15px;
+    font-size: 16px;
     display: flex;
     flex-direction: column;
 
@@ -109,6 +109,28 @@ body{
     }
 }
 
+.kpi1{
+    text-align: center;
+
+    p{
+        font-weight: bold;
+    }
+}
+
+.kpi2{
+    p{
+        font-weight: bold;
+    }
+}
+
+.kpi3{
+    display: flex;
+
+    ul{
+        margin-top: 5%;
+        gap: 15px;
+    }
+}
 
 .graficos {
     display: flex;

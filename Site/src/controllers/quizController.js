@@ -11,21 +11,6 @@ function buscarPerguntasPorQuiz(req, res) {
         });
 }
 
-function listarPontos(req, res) {
-
-  quizModel.listarPontos().then((resultadoListarPontos) => {
-    if (resultadoListarPontos.length > 0) {
-      res.status(200).json(resultadoListarPontos);
-    } else {
-        res.status(204).send("Nenhum resultado encontrado!")
-    }
-  }).catch(function (erro) {
-    console.log(erro);
-    console.log("Houve um erro ao buscar os pontos: ", erro.sqlMessage);
-    res.status(500).json(erro.sqlMessage);
-  });
-}
-
 function cadastrarPontos(req, res) {
   const { idUsuario, fkQuiz, pontos, tempo } = req.body;
 
@@ -39,6 +24,5 @@ function cadastrarPontos(req, res) {
 
 module.exports = {
     buscarPerguntasPorQuiz,
-    listarPontos,
     cadastrarPontos
 };
