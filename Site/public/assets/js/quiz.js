@@ -98,7 +98,7 @@ function iniciarCronometro() {
 
 function pararCronometro() {
     clearInterval(cronometroIntervalo);
-    return minutos, segundos;
+    return minutos * 60 + segundos;
 }
 
 function finalizarQuiz() {

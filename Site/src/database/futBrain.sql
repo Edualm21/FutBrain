@@ -1102,7 +1102,7 @@ INSERT INTO perguntas (fkQuiz, descricao) VALUES
     (6, 'De qual país foi o primeiro clube não europeu a disputar uma fase preliminar da Champions League?'),
     (6, 'Qual jogador marcou mais gols em uma única edição da Copa dos Campeões (antes da Champions)?'),
     (6, 'Qual final de Champions League teve mais gols marcados (tempo regulamentar + prorrogação)?'),
-    (6, 'Qual clube da Europa Oriental foi campeão da Champions League/Copa dos Campeões?'),
+    (6, 'Qual o primeiro clube da Europa Oriental foi campeão da Champions League/Copa dos Campeões?'),
     (6, 'Qual destes clubes NUNCA ganhou a Champions?'),
     (6, 'Quem foram os únicos três jogadores que marcaram 5 gols em uma partida de Champions League?'),
     (6, 'Qual destes clubes o Real Madrid NUNCA venceu na Champions?'),

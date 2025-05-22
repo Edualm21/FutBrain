@@ -48,10 +48,11 @@ function buscarMelhoresPontuadores(fkQuiz) {
     return database.executar(instrucaoSql);
 }
 
-function buscarPontuacao() {
+function buscarPontuacao(fkQuiz) {
     const instrucaoSql = `
-        SELECT AVG(pontos) as 'avg(pontos)'
-        FROM resultado;
+        SELECT AVG(pontos) AS 'avg(pontos)'
+        FROM resultado
+        WHERE fkQuiz = ${fkQuiz};
     `;
     return database.executar(instrucaoSql);
 }
@@ -60,9 +61,13 @@ function topTresTempos(fkQuiz) {
   const instrucao = `
     SELECT 
         u.nome,
-        r.tempo_segundos
-    FROM resultado as r
-    JOIN usuario as u ON r.fkUsuario = u.idUsuario
+        CONCAT(
+            LPAD(FLOOR(r.tempo_segundos / 60), 2, '0'),
+            ':',
+            LPAD(r.tempo_segundos % 60, 2, '0')
+        ) AS tempo_formatado
+    FROM resultado AS r
+    JOIN usuario AS u ON r.fkUsuario = u.idUsuario
     WHERE r.fkQuiz = ${fkQuiz}
       AND r.tempo_segundos IS NOT NULL
     ORDER BY r.tempo_segundos ASC

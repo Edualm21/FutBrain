@@ -1,15 +1,16 @@
 var graficoModel = require("../models/graficoModel");
 
 function buscarPontuacao(req, res) {
-    graficoModel.buscarPontuacao().then(function (resultado) {
+    const { fkQuiz } = req.params;
+
+    graficoModel.buscarPontuacao(fkQuiz).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
-            res.status(204).send("Nenhuma pontuação encontrada!")
+            res.status(204).send("Nenhuma pontuação encontrada!");
         }
     }).catch(function (erro) {
         console.log(erro);
-        console.log("Houve um erro ao buscar os pontos.", erro.sqlMessage);
         res.status(500).json(erro.sqlMessage);
     });
 }

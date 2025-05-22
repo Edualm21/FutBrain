@@ -4,18 +4,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../../assets/css/premierDash.css">
+  <link rel="stylesheet" href="../../assets/css/futebolDash.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <title>Dashboard Premier League</title>
+  <link rel="shortcut icon" href="../../assets/imgs/brazuca.svg" type="image/x-icon">
+  <title>Dashboard Futebol</title>
   <script>
     const liga = sessionStorage.getItem("LIGA_ATUAL");
   </script>
 </head>
 
-<body>
-  <div class="futebol" onload="validarSessao()">
+<body onload="validarSessao()">
+  <div class="futebol">
     <div class="backHome">
-      <img src="../../assets/imgs/premier.svg" alt="">
+      <img src="../../assets/imgs/brazuca.svg">
       <a href="../home.html">Home</a>
     </div>
 

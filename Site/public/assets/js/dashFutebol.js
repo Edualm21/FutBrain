@@ -1,11 +1,11 @@
 const fkQuiz = 8;
 const idUsuario = sessionStorage.getItem('ID_USUARIO');
 
-fetch('/grafico/buscarPontuacao')
+fetch(`/grafico/buscarPontuacao/${fkQuiz}`)
   .then(response => response.json())
   .then(data => {
     const media = data[0]?.['avg(pontos)'] || 0;
-    document.getElementById('mediaPontuacaoJogadores').innerText = parseFloat(media).toFixed(2);
+    document.getElementById('mediaValor').innerText = parseFloat(media).toFixed(2);
   })
   .catch(error => console.error('Erro ao buscar média de pontuação:', error));
 
@@ -44,7 +44,10 @@ fetch('/grafico/buscarJogadoresPontuacoes', {
 
     const chartData = {
       labels: jogadores,
-      datasets: [{ label: 'Pontuação dos jogadores', data: pontuacoes, backgroundColor: '#fafafc' }],
+      datasets: [{ 
+        label: 'Pontuação dos jogadores', 
+        data: pontuacoes, 
+        backgroundColor: '#FFF' }],
     };
 
     new Chart(document.getElementById('grafico1'), { type: 'bar', data: chartData });
@@ -62,7 +65,7 @@ fetch(`/grafico/buscarPontuacaoUsuarioPorLiga/${idUsuario}`)
       datasets: [{
         label: 'Maior pontuação por liga',
         data: pontos,
-        backgroundColor: '#5c94fc'
+        backgroundColor: '#FFF'
       }]
     };
 
@@ -82,7 +85,7 @@ fetch(`/grafico/buscarTopTresTempos/${fkQuiz}`)
     data.forEach((item, index) => {
       const li = document.createElement('li');
       const medalha = ['🥇', '🥈', '🥉'][index] || '';
-      li.innerHTML = `${medalha}: ${item.nome} - ${item.tempo_segundos}s`;
+      li.innerHTML = `${medalha}: ${item.nome} - ${item.tempo_formatado}`;
       ul.appendChild(li);
     });
   })

@@ -1,7 +1,7 @@
 const fkQuiz = 1;
 const idUsuario = sessionStorage.getItem('ID_USUARIO');
 
-fetch('/grafico/buscarPontuacao')
+fetch(`/grafico/buscarPontuacao/${fkQuiz}`)
   .then(response => response.json())
   .then(data => {
     const media = data[0]?.['avg(pontos)'] || 0;
@@ -87,7 +87,7 @@ fetch(`/grafico/buscarTopTresTempos/${fkQuiz}`)
     data.forEach((item, index) => {
       const li = document.createElement('li');
       const medalha = ['🥇', '🥈', '🥉'][index] || '';
-      li.innerHTML = `${medalha}: ${item.nome} - ${item.tempo_segundos}s`;
+      li.innerHTML = `${medalha}: ${item.nome} - ${item.tempo_formatado}`;
       ul.appendChild(li);
     });
   })
