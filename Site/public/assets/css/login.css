@@ -104,3 +104,10 @@
     width: 24px;
     cursor: pointer;
 }
+
+#cadastrar{
+    text-decoration: none;
+    color: #1E2E3A;
+    display: flex;
+    margin-top: 2%;
+}

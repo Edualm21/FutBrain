@@ -9,7 +9,6 @@ fetch(`/grafico/buscarPontuacao/${fkQuiz}`)
   })
   .catch(error => console.error('Erro ao buscar média de pontuação:', error));
 
-
 fetch(`/grafico/buscarMelhoresPontuadores/${fkQuiz}`)
   .then(response => response.json())
   .then(data => {
@@ -27,9 +26,6 @@ fetch(`/grafico/buscarMelhoresPontuadores/${fkQuiz}`)
   })
   .catch(error => console.error('Erro ao buscar top 3 pontuadores:', error));
 
-
-
-// Plotar gráfico de pontuação dos jogadores
 fetch('/grafico/buscarJogadoresPontuacoes', {
   method: 'POST',
   headers: {
@@ -47,7 +43,8 @@ fetch('/grafico/buscarJogadoresPontuacoes', {
       datasets: [{ 
         label: 'Pontuação dos jogadores', 
         data: pontuacoes, 
-        backgroundColor: '#5c94fc' }],
+        backgroundColor: '#5C94FC',
+        color: '#000' }],
     };
 
     new Chart(document.getElementById('grafico1'), { type: 'bar', data: chartData });
@@ -91,7 +88,6 @@ fetch(`/grafico/buscarTopTresTempos/${fkQuiz}`)
   })
   .catch(err => console.error('Erro ao buscar top 3 tempos:', err));
 
-
 fetch(`/grafico/mediaPontuacao/${idUsuario}/${fkQuiz}`)
   .then(res => res.json())
   .then(data => {
@@ -99,4 +95,3 @@ fetch(`/grafico/mediaPontuacao/${idUsuario}/${fkQuiz}`)
     document.getElementById('pontuacaoMediaJogador').innerHTML = `${media}`;
   })
   .catch(err => console.error('Erro ao buscar média de pontuação:', err));
-

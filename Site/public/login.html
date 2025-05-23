@@ -16,17 +16,18 @@
             <img src="assets/imgs/logoFutBrain.png">
         </div>
         <div class="form-login">
-            <label>Email ou Usuário</label>
+            <label for="input_email">Email ou Usuário</label>
             <div class="input">
                 <input id="input_email" placeholder="Username">
                 <img src="assets/imgs/people.svg">
             </div>
-            <label>Senha</label>
+            <label for="input_senha">Senha</label>
             <div class="input">
                 <input type="password" id="input_senha" placeholder="********">
                 <img src="assets/imgs/olhoFechado.svg" onclick="mostrarSenha()" class="view" id="olhoFechado">
                 <img src="assets/imgs/olhoAberto.svg" onclick="mostrarSenha()" class="hide" id="olhoAberto">
             </div>
+            <a href="cadastro.html" id="cadastrar">Não tem uma conta? Cadastre-se</a>
             <button onclick="entrar()">Entrar</button>
         </div>
     </div>
