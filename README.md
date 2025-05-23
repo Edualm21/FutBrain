@@ -45,7 +45,7 @@ Além disso, a plataforma conta com uma introdução à **história do futebol**
    ```bash
     npm i ou npm install
     ```
-4. inicialize o Serivodor Local - app.js
+4. inicialize o Servidor Local - app.js
    ```bash
     npm start
     ```
