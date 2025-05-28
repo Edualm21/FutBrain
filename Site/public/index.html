@@ -11,7 +11,7 @@
 
 <body>
     <div class="home" id="home">
-        <img src="assets/imgs/cr7Background.jpg" id="background">
+        <img src="assets/imgs/O-Rei-do-Futebol.jpg" id="background">
         <nav class="nav">
             <img src="assets/imgs/logoFutBrain.png" id="logo">
             <a href="#curiosidades">Curiosidades</a>
@@ -88,7 +88,6 @@
                 <h2>Descubra curiosidades sobre seus times</h2>
             </div>
             <div class="formulario">
-
                 <div class="campos">
                     <label for="input_time_br">Time brasileiro</label>
                     <div class="input">
@@ -104,7 +103,7 @@
                 </div>
 
                 <div class="campos">
-                    <label for="input_tempo_que_acompanha">Tempo que acompanha futebol</label>
+                    <label for="input_tempo_que_acompanha">Ano em que começou a acompanhar futebol</label>
                     <div class="input">
                         <input type="text" id="input_tempo_que_acompanha">
                     </div>
@@ -114,7 +113,9 @@
             </div>
         </div>
         <div class="respostas">
-
+            <div id="loading" style="display: none;">
+                <p>🔄 Gerando curiosidades... aguarde!</p>
+            </div>
             <div class="campo-resposta" id="resposta"></div>
 
         </div>

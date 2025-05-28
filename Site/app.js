@@ -34,13 +34,13 @@ app.use("/grafico", graficoRouter);
 
 app.listen(PORTA_APP, function () {
     console.log(`
-                #######  ##    ##  ######  ####       ##     ######     ##               
-                ##       ##    ##    ##    ## ##     ####      ##      ####               
-                ##       ##    ##    ##    ##  ##   ##  ##     ##     ##  ##               
-                ## # ##  ##    ##    ##    ##  ##   ######     ##     ######          
-                ##       ##    ##    ##    ##  ##   ##  ##     ##     ##  ##                 
-                ##       ##    ##    ##    ## ##    ##  ##     ##     ##  ##            
-                ##       ########    ##    ####     ##  ##     ##     ##  ##              
+                #######  ##    ##  ######  #####     ######     ##     ####  #####     ## 
+                ##       ##    ##    ##    ##  ##   ##     ##  ####     ##   ##  ##    ##
+                ##       ##    ##    ##    ##  ##   ##   ##   ##   ##   ##   ##   ##   ##
+                ## # ##  ##    ##    ##    #####    ##  ##    #######   ##   ##    ##  ##
+                ##       ##    ##    ##    ##  ##   ####      ##   ##   ##   ##     ## ##
+                ##       ##    ##    ##    ##  ##   ##  ##    ##   ##   ##   ##      ###  
+                ##       ########    ##    #####    ##    ##  ##   ##  ####  ##       
     \n\n\n                                                                                                 
     Servidor do seu site já está rodando! Acesse o caminho a seguir para visualizar .: http://${HOST_APP}:${PORTA_APP} :. \n\n
     Você está rodando sua aplicação em ambiente de .:${process.env.AMBIENTE_PROCESSO}:. \n\n
@@ -68,29 +68,20 @@ async function gerarResposta(timeBr, timeEuropeu, anoQueComecou) {
         const modeloIA = chatIA.models.generateContent({
             model: "gemini-2.0-flash",
             contents: `
-            Em tópicos de no máximo duas linhas conte três curiosidades sobre: ${timeBr},
-            Em tópicos de no máximo duas linhas conte três curiosidades sobre: ${timeEuropeu},
-            Em tópicos de no máximo duas linhas conte três curiosidades do futebol no ano: ${anoQueComecou}.
+            Em tópicos de no máximo duas linhas conte três curiosidades sobre:(Mande a resposta com um título e sem nenhum simbolo especial como * e #. Separe os tópicos por pontos e não asteriscos) ${timeBr},
+            Em tópicos de no máximo duas linhas conte três curiosidades sobre:(Mande a resposta com um título e sem nenhum simbolo especial como * e #. Separe os tópicos por pontos e não asteriscos) ${timeEuropeu},
+            Em tópicos de no máximo duas linhas conte três curiosidades do futebol no ano:(Mande a resposta com um título e sem nenhum simbolo especial como * e #. Separe os tópicos por pontos e não asteriscos) ${anoQueComecou}.
             `
         });
 
         const resposta = (await modeloIA).text;
 
-        const respostaTratada = resposta
-        // Remove títulos com ## (como ## Corinthians:)
-        .replace(/^##\s.*$/gmi, '')
-        // Remove negritos markdown (ex: **texto**)
-        .replace(/\*\*(.*?)\*\*/g, '$1')
-        // Remove quebras de linha excessivas
-        .replace(/\n{2,}/g, '\n\n')
-        .trim();
-
         const tokens = (await modeloIA).usageMetadata;
 
-        console.log(respostaTratada);
+        console.log(resposta);
         console.log("Uso de Tokens:", tokens);
 
-        return respostaTratada;
+        return resposta;
     } catch (error) {
         console.error(error);
         throw error;
