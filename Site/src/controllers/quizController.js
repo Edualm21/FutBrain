@@ -1,10 +1,10 @@
 var quizModel = require("../models/quizModel");
 
 function buscarPerguntasPorQuiz(req, res) {
-    const fkQuiz = req.params.fkQuiz
+    const fkQuiz = req.params.fkQuiz // Extrai o ID do quiz da URL
 
     quizModel.buscarPerguntasPorQuiz(fkQuiz)
-        .then(resultado => res.json(resultado))
+        .then(resultado => res.json(resultado)) 
         .catch(erro => {
             console.error("Erro ao buscar perguntas:", erro)
             res.status(500).json({ erro: "Erro ao buscar perguntas" })

@@ -19,7 +19,7 @@ function buscarPerguntasPorQuiz(fkQuiz) {
 
 function cadastrarPontos(idUsuario, fkQuiz, pontos, tempo) {
   const instrucao = `
-    INSERT INTO resultado (fkUsuario, fkQuiz, pontos, tempo_segundos) VALUES 
+    INSERT INTO resultado (fkUsuario, fkQuiz, pontos, te mpo_segundos) VALUES 
     ('${idUsuario}', '${fkQuiz}', '${pontos}', '${tempo}');
   `;
   console.log("Executando a instrução SQL: \n" + instrucao);

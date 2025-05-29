@@ -25,6 +25,7 @@ CREATE TABLE resultado (
     FOREIGN KEY (fkQuiz) REFERENCES Quizzes(idQuiz)
 );
 
+
 CREATE TABLE perguntas(
     idPergunta INT AUTO_INCREMENT,
     fkQuiz INT,

@@ -33,7 +33,7 @@ function buscarPontuacaoUsuarioPorLiga(idUsuario) {
 }
 
 function buscarMelhoresPontuadores(fkQuiz) {
-   const instrucaoSql = `
+    const instrucaoSql = `
     SELECT 
         u.nome AS 'Nome Jogador', 
         MAX(r.pontos) AS pontos
@@ -58,31 +58,35 @@ function buscarPontuacao(fkQuiz) {
 }
 
 function topTresTempos(fkQuiz) {
-  const instrucao = `
+    const instrucao = `
     SELECT 
         u.nome,
         CONCAT(
-            LPAD(FLOOR(r.tempo_segundos / 60), 2, '0'),
+            LPAD(FLOOR(melhor_tempo.tempo_segundos / 60), 2, '0'),
             ':',
-            LPAD(r.tempo_segundos % 60, 2, '0')
+            LPAD(melhor_tempo.tempo_segundos % 60, 2, '0')
         ) AS tempo_formatado
-    FROM resultado AS r
-    JOIN usuario AS u ON r.fkUsuario = u.idUsuario
-    WHERE r.fkQuiz = ${fkQuiz}
-      AND r.tempo_segundos IS NOT NULL
-    ORDER BY r.tempo_segundos ASC
+    FROM (
+        SELECT fkUsuario, MIN(tempo_segundos) AS tempo_segundos
+        FROM resultado
+        WHERE fkQuiz = ${fkQuiz}
+        AND tempo_segundos IS NOT NULL
+        GROUP BY fkUsuario
+    ) AS melhor_tempo
+    JOIN usuario AS u ON melhor_tempo.fkUsuario = u.idUsuario
+    ORDER BY melhor_tempo.tempo_segundos ASC
     LIMIT 3;
   `;
-  return database.executar(instrucao);
+    return database.executar(instrucao);
 }
 
 function mediaPontuacaoUsuario(idUsuario, fkQuiz) {
-  const instrucao = `
+    const instrucao = `
     SELECT AVG(pontos) AS media_pontuacao
     FROM resultado
     WHERE fkUsuario = ${idUsuario} AND fkQuiz = ${fkQuiz};
   `;
-  return database.executar(instrucao);
+    return database.executar(instrucao);
 }
 
 module.exports = {

@@ -12,7 +12,7 @@ fetch(`/grafico/buscarPontuacao/${fkQuiz}`)
 fetch(`/grafico/buscarMelhoresPontuadores/${fkQuiz}`)
   .then(response => response.json())
   .then(data => {
-    console.log("Resposta recebida:", data);
+  
 
     const top3List = document.getElementById('topTresPontuadores');
     top3List.innerHTML = '';
@@ -35,6 +35,7 @@ fetch('/grafico/buscarJogadoresPontuacoes', {
 })
   .then(response => response.json())
   .then(data => {
+
     const jogadores = data.map(item => item.nome_jogador || item["Nome Jogador"]);
     const pontuacoes = data.map(item => item.pontos);
 
@@ -50,6 +51,7 @@ fetch('/grafico/buscarJogadoresPontuacoes', {
     new Chart(document.getElementById('grafico1'), { type: 'bar', data: chartData });
   })
   .catch(error => console.error('Erro ao buscar pontuação dos jogadores:', error));
+
 
 fetch(`/grafico/buscarPontuacaoUsuarioPorLiga/${idUsuario}`)
   .then(response => response.json())
@@ -76,7 +78,7 @@ fetch(`/grafico/buscarPontuacaoUsuarioPorLiga/${idUsuario}`)
 fetch(`/grafico/buscarTopTresTempos/${fkQuiz}`)
   .then(res => res.json())
   .then(data => {
-    console.log('Dados recebidos:', data);
+    
     const ul = document.getElementById('listaMelhoresTempos');
     ul.innerHTML = '';
     data.forEach((item, index) => {
