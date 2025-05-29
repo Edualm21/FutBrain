@@ -1,7 +1,7 @@
 var graficoModel = require("../models/graficoModel");
 
 function buscarPontuacao(req, res) {
-    const { fkQuiz } = req.params;
+    const fkQuiz  = req.params.fkQuiz;
 
     graficoModel.buscarPontuacao(fkQuiz).then(function (resultado) {
         if (resultado.length > 0) {
@@ -16,7 +16,7 @@ function buscarPontuacao(req, res) {
 }
 
 function buscarJogadoresPontuacoes(req, res) {
-    const { liga } = req.body;
+    const liga = req.body.liga;
 
     if (!liga) {
         return res.status(400).json({ erro: 'Liga não informada.' });
@@ -69,7 +69,8 @@ function buscarTopTresPontuadores(req, res) {
 }
 
 function buscarMediaPontuacao(req, res) {
-  const { idUsuario, fkQuiz } = req.params;
+  const idUsuario = req.params.idUsuario;
+  const fkQuiz = req.params.fkQuiz;
 
   graficoModel.mediaPontuacaoUsuario(idUsuario, fkQuiz)
     .then(resultado => res.status(200).json(resultado[0]))

@@ -161,6 +161,7 @@ window.onload = () => {
             data.forEach(item => {
                 
                 if (!perguntasAgrupadas[item.idPergunta]) {
+                    
                     perguntasAgrupadas[item.idPergunta] = {
                         pergunta: item.pergunta,
                         respostas: []
@@ -170,7 +171,7 @@ window.onload = () => {
                 perguntasAgrupadas[item.idPergunta].respostas.push({
                     text: item.resposta,
                     correct: item.correta == 1
-                })
+                })  
             })
 
             listaDePerguntas = Object.values(perguntasAgrupadas) // Converte objeto para array

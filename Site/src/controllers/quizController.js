@@ -1,7 +1,7 @@
 var quizModel = require("../models/quizModel");
 
 function buscarPerguntasPorQuiz(req, res) {
-    const fkQuiz = req.params.fkQuiz // Extrai o ID do quiz da URL
+    const fkQuiz = req.params.fkQuiz
 
     quizModel.buscarPerguntasPorQuiz(fkQuiz)
         .then(resultado => res.json(resultado)) 
@@ -12,7 +12,10 @@ function buscarPerguntasPorQuiz(req, res) {
 }
 
 function cadastrarPontos(req, res) {
-  const { idUsuario, fkQuiz, pontos, tempo } = req.body;
+  const  idUsuario = req.body.idUsuario;
+  const  fkQuiz = req.body.fkQuiz;
+  const  pontos = req.body.pontos;
+  const  tempo  = req.body.tempo;
 
   quizModel.cadastrarPontos(idUsuario, fkQuiz, pontos, tempo)
     .then(resultado => res.status(200).json(resultado))
