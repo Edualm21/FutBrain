@@ -5,12 +5,12 @@ function buscarPerguntasPorQuiz(fkQuiz) {
         SELECT p.idPergunta, p.descricao AS pergunta, a.idAlternativa, a.resposta, a.correta
         FROM (
             SELECT idPergunta, descricao
-            FROM perguntas
+            FROM Perguntas
             WHERE fkQuiz = ${fkQuiz}
             ORDER BY RAND()
             LIMIT 10
         ) AS p
-        JOIN alternativas a ON a.fkPergunta = p.idPergunta
+        JOIN Alternativas a ON a.fkPergunta = p.idPergunta
         ORDER BY p.idPergunta, a.idAlternativa;
     `;
     console.log("Executando a instrução SQL:\n" + instrucao);
@@ -19,7 +19,7 @@ function buscarPerguntasPorQuiz(fkQuiz) {
 
 function cadastrarPontos(idUsuario, fkQuiz, pontos, tempo) {
   const instrucao = `
-    INSERT INTO resultado (fkUsuario, fkQuiz, pontos, te mpo_segundos) VALUES 
+    INSERT INTO Resultado (fkUsuario, fkQuiz, pontos, tempo_segundos) VALUES 
     ('${idUsuario}', '${fkQuiz}', '${pontos}', '${tempo}');
   `;
   console.log("Executando a instrução SQL: \n" + instrucao);

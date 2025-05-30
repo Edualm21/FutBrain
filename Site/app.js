@@ -16,7 +16,7 @@ var HOST_APP = process.env.APP_HOST;
 
 var app = express();
 
-const chatIA = new GoogleGenAI({ apiKey: process.env.MINHA_CHAVE });
+const chatIA = new GoogleGenAI({ apiKey: process.env.MINHA_CHAVE});
 
 var quizRouter = require("./src/routes/quiz");
 var usuarioRouter = require("./src/routes/usuarios");

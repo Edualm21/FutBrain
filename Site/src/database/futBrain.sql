@@ -1,7 +1,7 @@
-CREATE DATABASE futBrain;
-USE futBrain;
+CREATE DATABASE FutBrain;
+USE FutBrain;
 
-CREATE TABLE usuario(
+CREATE TABLE Usuario(
     idUsuario INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(45),
     usuario VARCHAR(45),
@@ -9,7 +9,7 @@ CREATE TABLE usuario(
     senha VARCHAR(45)  
 );
 
-CREATE TABLE quizzes(
+CREATE TABLE Quizzes(
     idQuiz INT PRIMARY KEY AUTO_INCREMENT,
     liga VARCHAR(45) UNIQUE
 );
@@ -26,7 +26,7 @@ CREATE TABLE resultado (
 );
 
 
-CREATE TABLE perguntas(
+CREATE TABLE Perguntas(
     idPergunta INT AUTO_INCREMENT,
     fkQuiz INT,
     descricao VARCHAR(350),
@@ -34,7 +34,7 @@ CREATE TABLE perguntas(
     PRIMARY KEY(idPergunta, fkQuiz)
 );
 
-CREATE TABLE alternativas(
+CREATE TABLE Alternativas(
     idAlternativa INT AUTO_INCREMENT,
     fkPergunta INT,
     resposta VARCHAR(80),
@@ -43,7 +43,7 @@ CREATE TABLE alternativas(
     PRIMARY KEY(idAlternativa, fkPergunta)
 );
 
-INSERT INTO quizzes VALUES 
+INSERT INTO Quizzes VALUES 
 
     (DEFAULT, 'Premier League'),
     (DEFAULT, 'La Liga'),
@@ -54,7 +54,7 @@ INSERT INTO quizzes VALUES
     (DEFAULT, 'Copa do Mundo'),
     (DEFAULT, 'Futebol');
 
-INSERT INTO perguntas (fkQuiz, descricao) VALUES
+INSERT INTO Perguntas (fkQuiz, descricao) VALUES
 (1, 'Qual clube é conhecido como "The Gunners"?'),
 (1, 'Qual clube venceu a Premier League na temporada 2022/23?'),
 (1, 'Qual jogador é o maior artilheiro da história da Premier League?'),
@@ -101,7 +101,7 @@ INSERT INTO perguntas (fkQuiz, descricao) VALUES
 (1, 'Qual clube usava o estádio White Hart Lane até 2017?'),
 (1, 'Qual jogador marcou mais assistências em uma única temporada da Premier League?');
 
-INSERT INTO alternativas (fkPergunta, resposta, correta) VALUES
+INSERT INTO Alternativas (fkPergunta, resposta, correta) VALUES
 (1, 'Arsenal', 1),
 (1, 'Chelsea', 0),
 (1, 'Tottenham', 0),
@@ -283,7 +283,7 @@ INSERT INTO alternativas (fkPergunta, resposta, correta) VALUES
 (45, 'Cesc Fàbregas', 0),
 (45, 'Ryan Giggs', 0);
 
-INSERT INTO perguntas (fkQuiz, descricao) VALUES
+INSERT INTO Perguntas (fkQuiz, descricao) VALUES
     (2, 'Qual jogador tem mais gols na história da LaLiga?'),
     (2, 'Qual jogador tem mais assistências na história da LaLiga?'),
     (2, 'Qual jogador tem mais jogos na história de LaLiga?'),
@@ -321,7 +321,7 @@ INSERT INTO perguntas (fkQuiz, descricao) VALUES
     (2, 'Qual time ficou mais jogos consecutivos sem derrotas na história de LaLiga?'),
     (2, 'Qual time ficou mais jogos consecutivos da LaLiga sem sofrer gols?');
 
-INSERT INTO alternativas (fkPergunta, resposta, correta) VALUES
+INSERT INTO Alternativas (fkPergunta, resposta, correta) VALUES
     (46, 'Lionel Messi', 1),
     (46, 'Cristiano Ronaldo', 0),
     (46, 'Telmo Zarra', 0),
@@ -467,7 +467,7 @@ INSERT INTO alternativas (fkPergunta, resposta, correta) VALUES
     (81, 'Barcelona', 0),
     (81, 'Valencia', 0);
 
- INSERT INTO perguntas (fkQuiz, descricao) VALUES
+ INSERT INTO Perguntas (fkQuiz, descricao) VALUES
     (3, 'Qual clube é o maior campeão da Bundesliga?'),
     (3, 'Em que país se disputa a Bundesliga?'),
     (3, 'Qual é o estádio do Bayern de Munique?'),
@@ -499,7 +499,7 @@ INSERT INTO alternativas (fkPergunta, resposta, correta) VALUES
     (3, 'Qual time alemão tem o apelido “Die Fohlen” (Os Potros)?'),
     (3, 'Em que temporada o Hamburgo foi rebaixado pela primeira vez na história da Bundesliga?');
 
-INSERT INTO alternativas (fkPergunta, resposta, correta) VALUES
+INSERT INTO Alternativas (fkPergunta, resposta, correta) VALUES
     (82, 'Bayern de Munique', 1),
     (82, 'Borussia Dortmund', 0),
     (82, 'Hamburgo', 0),
@@ -621,7 +621,7 @@ INSERT INTO alternativas (fkPergunta, resposta, correta) VALUES
     (111, '2005–06', 0),
     (111, '1999–00', 0);
 
-INSERT INTO perguntas (fkQuiz, descricao) VALUES
+INSERT INTO Perguntas (fkQuiz, descricao) VALUES
     (4, 'Qual clube venceu mais títulos da Série A?'),
     (4, 'Qual é a cor predominante do uniforme da Juventus?'),
     (4, 'Qual cidade é sede do Milan e da Inter de Milão?'),
@@ -668,7 +668,7 @@ INSERT INTO perguntas (fkQuiz, descricao) VALUES
     (4, 'Quem marcou o gol do título do Napoli na temporada 2022/23?'),
     (4, 'Qual foi o primeiro clube italiano a conquistar a tríplice coroa (Série A, Coppa Italia e Champions League na mesma temporada)?');
 
-INSERT INTO alternativas (fkPergunta, resposta, correta) VALUES
+INSERT INTO Alternativas (fkPergunta, resposta, correta) VALUES
     (112, 'Juventus', 1),
     (112, 'Milan', 0),
     (112, 'Inter de Milão', 0),
@@ -851,7 +851,7 @@ INSERT INTO alternativas (fkPergunta, resposta, correta) VALUES
     (156, 'Roma', 0);
     
 
-INSERT INTO perguntas (fkQuiz, descricao) VALUES
+INSERT INTO Perguntas (fkQuiz, descricao) VALUES
     (5, 'Qual jogador é o maior artilheiro em uma única edição do Campeonato Brasileiro de pontos corridos?'),
     (5, 'Quem é o maior artilheiro da história do Campeonato Brasileiro?'),
     (5, 'Qual clube tem mais títulos do Campeonato Brasileiro?'),
@@ -897,7 +897,7 @@ INSERT INTO perguntas (fkQuiz, descricao) VALUES
     (5, 'Em que ano e qual clube teve o pior ataque em uma única edição do Campeonato Brasileiro de pontos corridos com 20 clubes?');
 
 
-INSERT INTO alternativas (fkPergunta, resposta, correta) VALUES
+INSERT INTO Alternativas (fkPergunta, resposta, correta) VALUES
     (157, 'Washington "Coração Valente"', 1),
     (157, 'Grafite', 0),
     (157, 'Luís Fabiano', 0),
@@ -1063,7 +1063,7 @@ INSERT INTO alternativas (fkPergunta, resposta, correta) VALUES
     (197, '2015 - Joinville', 0),
     (197, '2020 - Goiás', 0);
 
-INSERT INTO perguntas (fkQuiz, descricao) VALUES
+INSERT INTO Perguntas (fkQuiz, descricao) VALUES
 
     (6, 'Qual único time a vencer a Champions League 3 vezes consecutivas?'),
     (6, 'Quem é o maior artilheiro da história da Champions League?'),
@@ -1111,7 +1111,7 @@ INSERT INTO perguntas (fkQuiz, descricao) VALUES
     (6, 'O hino da Champions é composto por três idiomas diferentes, quais são?'),
     (6, 'Qual foi a primeira final da Champions League?');
 
-INSERT INTO alternativas (fkPergunta, resposta, correta) VALUES
+INSERT INTO Alternativas (fkPergunta, resposta, correta) VALUES
 
 (200, 'Real Madrid', 1),
 (200, 'Milan', 0),
@@ -1295,7 +1295,7 @@ INSERT INTO alternativas (fkPergunta, resposta, correta) VALUES
 (244, 'Inter de Milão 2x1 Real Madrid', 0);
 
 
-INSERT INTO perguntas (fkQuiz, descricao) VALUES
+INSERT INTO Perguntas (fkQuiz, descricao) VALUES
     (7, 'Qual país sediou a Copa do Mundo de 2014?'),
     (7, 'Qual jogador fez o gol do título da Alemanha na final da Copa de 2014?'),
     (7, 'Em que ano o Brasil foi campeão mundial pela última vez?'),
@@ -1341,7 +1341,7 @@ INSERT INTO perguntas (fkQuiz, descricao) VALUES
     (7, 'Qual país sediou a Copa de 1962?'),
     (7, 'Qual seleção teve a pior campanha de um anfitrião na história da Copa?');
 
-INSERT INTO alternativas (fkPergunta, resposta, correta) VALUES
+INSERT INTO Alternativas (fkPergunta, resposta, correta) VALUES
     (245, 'Brasil', 1),
     (245, 'Alemanha', 0),
     (245, 'Argentina', 0),
@@ -1519,7 +1519,7 @@ INSERT INTO alternativas (fkPergunta, resposta, correta) VALUES
     (288, 'Coreia do Sul/Japão', 0),
     (288, 'Brasil', 0);
 
-INSERT INTO perguntas (fkQuiz, descricao) VALUES
+INSERT INTO Perguntas (fkQuiz, descricao) VALUES
     (8, 'Qual o maior artilheiro da história?'), -- idPergunta = 289
     (8, 'Qual o jogador com mais assistências na história?'), -- idPergunta = 290
     (8, 'Qual o jogador com mais jogos na história?'), -- idPergunta = 291
@@ -1562,7 +1562,7 @@ INSERT INTO perguntas (fkQuiz, descricao) VALUES
     (8, 'Qual cidade brasileira recebeu a primeira partida de futebol documentada no país?'), -- idPergunta = 328
     (8, 'Em que ano foi realizada a primeira partida de futebol registrada na América do Sul?'); -- idPergunta = 329
 
-INSERT INTO alternativas (fkPergunta, resposta, correta) VALUES
+INSERT INTO Alternativas (fkPergunta, resposta, correta) VALUES
     (289, 'Pelé', 1),
     (289, 'Cristiano Ronaldo', 0),
     (289, 'Lionel Messi', 0),
