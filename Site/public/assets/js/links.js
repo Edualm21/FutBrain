@@ -9,7 +9,7 @@ function laligaDash() {
 }
 
 function serieADash() {
-    sessionStorage.setItem("LIGA_ATUAL", "Serie A");
+    sessionStorage.setItem("LIGA_ATUAL", "Serie A Tim");
     window.location = '../dashs/serieA.html';
 }
 

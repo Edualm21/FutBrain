@@ -7,7 +7,7 @@ function buscarJogadoresPontuacoes(liga) {
             u.nome AS nome_jogador, 
             MAX(r.pontos) AS pontos
         FROM Resultado as r
-        JOIN Usuario as a ON r.fkUsuario = u.idUsuario
+        JOIN Usuario as u ON r.fkUsuario = u.idUsuario
         JOIN Quizzes AS q ON r.fkQuiz = q.idQuiz
         WHERE q.liga = '${liga}'
         GROUP BY u.idUsuario, u.nome

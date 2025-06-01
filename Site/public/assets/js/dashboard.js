@@ -1,5 +1,36 @@
-const fkQuiz = 2;
+const ligaAtual = sessionStorage.getItem("LIGA_ATUAL");
+const fkQuiz = obterFkQuizPorLiga(ligaAtual);
 const idUsuario = sessionStorage.getItem('ID_USUARIO');
+
+function obterFkQuizPorLiga(ligaAtual) {
+  const ligasParaQuiz = {
+    "Premier League": 1,
+    "La Liga": 2,
+    "Bundesliga": 3,
+    "Serie A Tim": 4,
+    "Brasileirão": 5,
+    "Champions League": 6,
+    "Copa do Mundo": 7,
+    "Futebol": 8
+  };
+
+  return ligasParaQuiz[ligaAtual];
+}
+
+function obterCorPorLiga(ligaAtual) {
+  const cores = {
+    "Premier League": "#541C5D",
+    "La Liga": "#DC052D",
+    "Bundesliga": "#DC052D",
+    "Serie A Tim": "#0000FF",
+    "Brasileirão": "#004d96",
+    "Champions League": "#004d96",
+    "Copa do Mundo": "#F0E111",
+    "Futebol": "#FFF"
+  };
+
+  return cores[ligaAtual];
+}
 
 fetch(`/grafico/buscarPontuacao/${fkQuiz}`)
   .then(response => response.json())
@@ -8,7 +39,6 @@ fetch(`/grafico/buscarPontuacao/${fkQuiz}`)
     document.getElementById('mediaValor').innerText = parseFloat(media).toFixed(2);
   })
   .catch(error => console.error('Erro ao buscar média de pontuação:', error));
-
 
 fetch(`/grafico/buscarMelhoresPontuadores/${fkQuiz}`)
   .then(response => response.json())
@@ -27,9 +57,6 @@ fetch(`/grafico/buscarMelhoresPontuadores/${fkQuiz}`)
   })
   .catch(error => console.error('Erro ao buscar top 3 pontuadores:', error));
 
-
-
-// Plotar gráfico de pontuação dos jogadores
 fetch('/grafico/buscarJogadoresPontuacoes', {
   method: 'POST',
   headers: {
@@ -47,7 +74,7 @@ fetch('/grafico/buscarJogadoresPontuacoes', {
       datasets: [{ 
         label: 'Pontuação dos jogadores', 
         data: pontuacoes, 
-        backgroundColor: '#F56060',
+        backgroundColor: obterCorPorLiga(liga),
         color: '#000' }],
     };
 
@@ -67,7 +94,7 @@ fetch(`/grafico/buscarPontuacaoUsuarioPorLiga/${idUsuario}`)
       datasets: [{
         label: 'Maior pontuação por liga',
         data: pontos,
-        backgroundColor: '#F56060',
+        backgroundColor: obterCorPorLiga(liga),
         color: '#000'
       }]
     };
@@ -79,7 +106,8 @@ fetch(`/grafico/buscarPontuacaoUsuarioPorLiga/${idUsuario}`)
   })
   .catch(error => console.error('Erro ao buscar pontuação por liga:', error));
 
-  fetch(`/grafico/buscarTopTresTempos/${fkQuiz}`)
+
+fetch(`/grafico/buscarTopTresTempos/${fkQuiz}`)
   .then(res => res.json())
   .then(data => {
     console.log('Dados recebidos:', data);
@@ -102,4 +130,3 @@ fetch(`/grafico/mediaPontuacao/${idUsuario}/${fkQuiz}`)
     document.getElementById('pontuacaoMediaJogador').innerHTML = `${media}`;
   })
   .catch(err => console.error('Erro ao buscar média de pontuação:', err));
-
