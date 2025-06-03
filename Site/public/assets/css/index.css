@@ -305,13 +305,32 @@ body {
     font-weight: bold;
     width: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    flex-direction: row;
+    height: 100px;
 
-    img{
+    a {
+        display: flex;
+        align-items: center;
+    }
+
+    img {
         width: 50px;
         height: 50px;
         cursor: pointer;
     }
+}
+
+.footer .imagens {
+    display: flex;
+    width: 60%;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.footer .informacoes {
+    display: flex;
+    width: 30%;
+    justify-content: space-around;
+    margin-left: 3%;
+
 }
