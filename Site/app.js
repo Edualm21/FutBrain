@@ -68,8 +68,8 @@ async function gerarResposta(timeBr, timeEuropeu, anoQueComecou) {
         const modeloIA = chatIA.models.generateContent({
             model: "gemini-2.0-flash",
             contents: `
-            Em tópicos de no máximo duas linhas conte três curiosidades sobre:(Mande a resposta com um título e sem nenhum simbolo especial como * e #. Separe os tópicos por pontos e não asteriscos) ${timeBr},
-            Em tópicos de no máximo duas linhas conte três curiosidades sobre:(Mande a resposta com um título e sem nenhum simbolo especial como * e #. Separe os tópicos por pontos e não asteriscos) ${timeEuropeu},
+            Em tópicos de no máximo duas linhas conte três curiosidades sobre o time:(Mande a resposta com um título e sem nenhum simbolo especial como * e #. Separe os tópicos por pontos e não asteriscos) ${timeBr},
+            Em tópicos de no máximo duas linhas conte três curiosidades sobre o time:(Mande a resposta com um título e sem nenhum simbolo especial como * e #. Separe os tópicos por pontos e não asteriscos) ${timeEuropeu},
             Em tópicos de no máximo duas linhas conte três curiosidades do futebol no ano:(Mande a resposta com um título e sem nenhum simbolo especial como * e #. Separe os tópicos por pontos e não asteriscos) ${anoQueComecou}.
             `
         });

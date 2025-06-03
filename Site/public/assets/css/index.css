@@ -307,6 +307,7 @@ body {
     display: flex;
     flex-direction: row;
     height: 100px;
+    z-index: -2;
 
     a {
         display: flex;
@@ -318,19 +319,21 @@ body {
         height: 50px;
         cursor: pointer;
     }
+    
 }
 
 .footer .imagens {
     display: flex;
-    width: 60%;
     align-items: center;
     justify-content: flex-end;
+    gap: 50px;
+    margin-right: 3%;
 }
 
 .footer .informacoes {
     display: flex;
-    width: 30%;
-    justify-content: space-around;
+    width: 100%;
+    justify-content: center;
     margin-left: 3%;
-
+    align-items: center;
 }

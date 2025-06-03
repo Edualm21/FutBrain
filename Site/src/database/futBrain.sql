@@ -8,11 +8,14 @@ CREATE TABLE Usuario(
     email VARCHAR(45),
     senha VARCHAR(45)  
 );
+USE FutBrain;
 
 CREATE TABLE Quizzes(
     idQuiz INT PRIMARY KEY AUTO_INCREMENT,
     liga VARCHAR(45) UNIQUE
 );
+
+USE FutBrain;
 
 CREATE TABLE resultado (
     idResultado INT AUTO_INCREMENT PRIMARY KEY,
@@ -20,7 +23,7 @@ CREATE TABLE resultado (
     fkQuiz INT,
     pontos INT,
     dtQuiz DATETIME DEFAULT CURRENT_TIMESTAMP,
-    tempo_segundos INT,
+    segundos INT,
     FOREIGN KEY (fkUsuario) REFERENCES Usuario(idUsuario),
     FOREIGN KEY (fkQuiz) REFERENCES Quizzes(idQuiz)
 );
@@ -878,7 +881,7 @@ INSERT INTO Perguntas (fkQuiz, descricao) VALUES
     (5, 'Quantas equipes jogam o campeonato brasileiro?'),
     (5, 'Quantos jogos tem o campeonato brasileiro no modelo atual?'),
     (5, 'Qual time possui a maior pontuação em uma única edição no brasileirão de pontos corridos?'),
-    (5, 'Quantos clubes já paraticiparam do campeonato brasileiro?'),
+    (5, 'Quantos clubes já participaram do campeonato brasileiro?'),
     (5, 'Quem é o artilheiro do brasileirão de pontos corridos?'),
     (5, 'Qual a maior goleada do campeonato brasileiro?'),
     (5, 'Qual time detém o recorde de maior torcida visitante na história da competição?'),
@@ -895,6 +898,7 @@ INSERT INTO Perguntas (fkQuiz, descricao) VALUES
     (5, 'Qual jogador estrangeiro com mais partidas disputadas na história do Campeonato Brasileiro?'),
     (5, 'Qual clube detém o recorde de maior sequência de vitórias consecutivas em uma única edição do Campeonato Brasileiro de pontos corridos?'),
     (5, 'Em que ano e qual clube teve o pior ataque em uma única edição do Campeonato Brasileiro de pontos corridos com 20 clubes?');
+
 
 
 INSERT INTO Alternativas (fkPergunta, resposta, correta) VALUES

@@ -152,12 +152,11 @@ function enviarPontuacao(pontos, idUsuario, fkQuiz, tempo) {
 var listaDePerguntas = [];
 
 window.onload = () => {
-    fetch(`/quiz/perguntas/${fkQuiz}`) // Chama a API passando o ID do quiz na URL
+    fetch(`/quiz/perguntas/${fkQuiz}`) 
         .then(res => res.json())
         .then(data => {
             const perguntasAgrupadas = {}
 
-            // Organiza os dados recebidos em um formato por pergunta com suas alternativas
             data.forEach(item => {
                 
                 if (!perguntasAgrupadas[item.idPergunta]) {
@@ -174,7 +173,7 @@ window.onload = () => {
                 })  
             })
 
-            listaDePerguntas = Object.values(perguntasAgrupadas) // Converte objeto para array
+            listaDePerguntas = Object.values(perguntasAgrupadas) 
             next()
         })
         .catch(err => console.error("Erro ao carregar perguntas:", err))

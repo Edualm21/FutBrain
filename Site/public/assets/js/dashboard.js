@@ -116,7 +116,7 @@ fetch(`/grafico/buscarTopTresTempos/${fkQuiz}`)
     data.forEach((item, index) => {
       const li = document.createElement('li');
       const medalha = ['🥇', '🥈', '🥉'][index] || '';
-      li.innerHTML = `${medalha}: ${item.nome} - ${item.tempo_formatado}`;
+      li.innerHTML = `${medalha}: ${item.usuario} - ${item.tempo_formatado}`;
       ul.appendChild(li);
     });
   })
