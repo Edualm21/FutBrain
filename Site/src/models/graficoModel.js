@@ -4,7 +4,7 @@ function buscarJogadoresPontuacoes(liga) {
     const instrucaoSql = `
         SELECT 
             u.idUsuario AS jogador_id, 
-            u.nome AS nome_jogador, 
+            u.usuario AS nome_jogador, 
             MAX(r.pontos) AS pontos
         FROM Resultado as r
         JOIN Usuario as u ON r.fkUsuario = u.idUsuario
@@ -35,7 +35,7 @@ function buscarPontuacaoUsuarioPorLiga(idUsuario) {
 function buscarMelhoresPontuadores(fkQuiz) {
     const instrucaoSql = `
     SELECT 
-        u.nome AS 'Nome Jogador', 
+        u.usuario AS 'Nome Jogador', 
         MAX(r.pontos) AS pontos
     FROM Resultado as r
     JOIN Usuario as u ON r.fkUsuario = u.idUsuario
@@ -60,21 +60,23 @@ function buscarPontuacao(fkQuiz) {
 function topTresTempos(fkQuiz) {
     const instrucao = `
     SELECT 
-        u.nome,
+        u.usuario,
         CONCAT(
-            LPAD(FLOOR(melhor_tempo.tempo_segundos / 60), 2, '0'),
+            LPAD(FLOOR(melhor_tempo.segundos / 60), 2, '0'),
             ':',
-            LPAD(melhor_tempo.tempo_segundos % 60, 2, '0')
+            LPAD(melhor_tempo.segundos % 60, 2, '0')
         ) AS tempo_formatado
     FROM (
-        SELECT fkUsuario, MIN(tempo_segundos) AS tempo_segundos
+        SELECT 
+        fkUsuario, 
+        MIN(segundos) AS segundos
         FROM Resultado
-        WHERE fkQuiz = ${fkQuiz}
-        AND tempo_segundos IS NOT NULL
+        WHERE fkQuiz = 1
+        AND segundos IS NOT NULL
         GROUP BY fkUsuario
     ) AS melhor_tempo
     JOIN Usuario AS u ON melhor_tempo.fkUsuario = u.idUsuario
-    ORDER BY melhor_tempo.tempo_segundos ASC
+    ORDER BY melhor_tempo.segundos ASC
     LIMIT 3;
   `;
     return database.executar(instrucao);
