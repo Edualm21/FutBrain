@@ -10,6 +10,7 @@ CREATE TABLE Usuario(
 );
 USE FutBrain;
 
+
 CREATE TABLE Quizzes(
     idQuiz INT PRIMARY KEY AUTO_INCREMENT,
     liga VARCHAR(45) UNIQUE
