@@ -26,46 +26,47 @@ function cadastrar() {
     userVar == "") {
     Swal.fire({
       icon: "error",
-      title: "Oops...",
+      title: "Cadastro incompleto",
       text: "Preencha todos campos para prosseguir!",
       color: "#50080b"
     });
   } else if (senhaForte == false) {
     Swal.fire({
       icon: "error",
-      title: "Oops...",
+      title: "Senha fraca",
       text: "Senha fraca, necessita de 8 caracteres, 1 maiúscula, 1 minuscula, um número e um caracter especial!",
       color: "#50080b"
     });
   } else if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".") == -1) {
     Swal.fire({
       icon: "error",
-      title: "Oops...",
+      title: "Inválido",
       text: "Email inválido!",
       color: "#50080b"
     });
   } else if (nomeVar.length < 2) {
     Swal.fire({
       icon: "error",
-      title: "Oops...",
+      title: "Nome curto",
       text: "O nome deve ter no mínimo 2 caracteres!",
       color: "#50080b"
     });
   } else if (userVar.length > 10) {
     Swal.fire({
       icon: "error",
-      title: "Oops...",
+      title: "Usuário longo",
       text: "O nome de usuário deve ter no máximo 10 caracteres!",
       color: "#50080b"
     });
   } else {
+
     Swal.fire({
       title: "Sucesso!",
       text: "Usuário cadastrado!!",
       icon: "success"
-    });
-
-    window.location.href = "login.html"
+    }); setTimeout(() => {
+      window.location.href = "login.html";
+    }, 1500);
 
     fetch("/usuarios/cadastrar", {
       method: "POST",

@@ -17,6 +17,8 @@ CREATE TABLE Quizzes(
 );
 
 USE FutBrain;
+SELECT * FROM Usuario;
+DELETE FROM Usuario WHERE idUsuario = 6;
 
 CREATE TABLE resultado (
     idResultado INT AUTO_INCREMENT PRIMARY KEY,
