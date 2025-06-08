@@ -71,7 +71,7 @@ function topTresTempos(fkQuiz) {
         fkUsuario, 
         MIN(segundos) AS segundos
         FROM Resultado
-        WHERE fkQuiz = 1
+        WHERE fkQuiz = ${fkQuiz}
         AND segundos IS NOT NULL
         GROUP BY fkUsuario
     ) AS melhor_tempo

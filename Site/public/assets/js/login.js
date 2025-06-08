@@ -34,7 +34,12 @@ function entrar() {
 
         } else {
 
-            console.log("Houve um erro ao tentar realizar o login!");
+            swal.fire({
+                title: "Erro ao realizar o login!",
+                text: "Usuário e/ou senha inválidos!",
+                icon: "error",
+            })
+            
 
             resposta.text().then(texto => {
                 console.error(texto);
